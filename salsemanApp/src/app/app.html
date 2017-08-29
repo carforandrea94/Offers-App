@@ -1,7 +1,14 @@
 <ion-menu [content]="content">
   <ion-header>
-    <ion-toolbar>
-      <ion-title>Menu</ion-title>
+    <ion-toolbar (click)="openPage(MyaccountPage)">
+
+      <ion-avatar item-end>
+        <img src="http://www.math.uni-frankfurt.de/~person/_4170854.jpg">
+      </ion-avatar>
+
+      <h2>John Smith</h2>
+      <p>SalseMan</p>
+
     </ion-toolbar>
   </ion-header>
 
