@@ -13,12 +13,20 @@
         "ionic": "3.9.2"
     },
     "dependencies": {
+        "@ionic-native/camera": "^4.2.1",
+        "@ionic-native/image-picker": "^4.2.1",
+        "com.synconset.imagepicker": "~2.1.8",
         "cordova-android": "^6.2.3",
+        "cordova-plugin-camera": "^2.4.1",
+        "cordova-plugin-camera-all-files": "^2.3.3-dev",
+        "cordova-plugin-compat": "^1.0.0",
         "cordova-plugin-console": "^1.0.5",
         "cordova-plugin-device": "^1.1.4",
+        "cordova-plugin-file": "^4.3.3",
         "cordova-plugin-imagepicker": "^1.3.0",
         "cordova-plugin-splashscreen": "^4.0.3",
         "cordova-plugin-statusbar": "^2.2.1",
+        "cordova-plugin-telerik-imagepicker": "^2.1.8",
         "cordova-plugin-whitelist": "^1.3.1",
         "ionic-plugin-keyboard": "^2.2.1"
     },
@@ -30,10 +38,14 @@
             "cordova-plugin-statusbar": {},
             "cordova-plugin-whitelist": {},
             "ionic-plugin-keyboard": {},
-            "cordova-plugin-imagepicker": {}
+            "cordova-plugin-imagepicker": {},
+            "cordova-plugin-file": {},
+            "cordova-plugin-camera": {},
+            "com.synconset.imagepicker": {
+                "PHOTO_LIBRARY_USAGE_DESCRIPTION": "your usage message"
+            },
+            "cordova-plugin-compat": {}
         },
-        "platforms": [
-            "android"
-        ]
+        "platforms": []
     }
 }

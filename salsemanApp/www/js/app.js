@@ -1,4 +1,4 @@
-angular.module('salseManApp', ['ionic', 'ngCordova', 'salseManApp.controllers'])
+angular.module('salseManApp', ['ionic', 'ngCordova', 'salseManApp.controllers', 'salseManApp.services'])
 
 	.run(function($ionicPlatform) {
 		$ionicPlatform.ready(function() {

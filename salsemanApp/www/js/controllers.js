@@ -1,6 +1,6 @@
 angular.module('salseManApp.controllers', [])
 
-	.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+	.controller('AppCtrl', function($scope, $ionicModal, $timeout, $ionicPlatform, $localStorage, $cordovaCamera, $cordovaImagePicker) {
 
 		// With the new view caching in Ionic, Controllers are only called
 		// when they are recreated or on app start, instead of every page change.
@@ -65,6 +65,50 @@ angular.module('salseManApp.controllers', [])
 			$timeout(function() {
 				$scope.closeRegister();
 			}, 1000);
+		};
+
+
+		//method to take a photo
+		$ionicPlatform.ready(function() {
+			var options = {
+				quality: 50,
+				destinationType: Camera.DestinationType.DATA_URL,
+				sourceType: Camera.PictureSourceType.CAMERA,
+				allowEdit: true,
+				encodingType: Camera.EncodingType.JPEG,
+				targetWidth: 100,
+				targetHeight: 100,
+				popoverOptions: CameraPopoverOptions,
+				saveToPhotoAlbum: false
+			};
+			$scope.takePicture = function() {
+				$cordovaCamera.getPicture(options).then(function(imageData) {
+					$scope.registration.imgSrc = "data:image/jpeg;base64," + imageData;
+				}, function(err) {
+					console.log(err);
+				});
+
+				$scope.registerform.show();
+			};
+		});
+
+
+		//method to set a photo from gallery
+		var galleryOpt = {
+			maximumImagesCount: 1,
+			width: 100,
+			height: 100,
+			quality: 80
+		};
+
+		$scope.picGallery = function() {
+			$cordovaImagePicker.getPictures(galleryOpt)
+				.then(function(results) {
+					$scope.registration.imgSrc = results[0];
+					console.log('Image URI: ' + results[0]);
+				}, function(error) {
+					console.log(error);
+				});
 		};
 	})
 
