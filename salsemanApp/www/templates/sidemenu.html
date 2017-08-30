@@ -1,12 +1,13 @@
 <ion-side-menus enable-menu-with-back-views="false">
   <ion-side-menu-content>
+
     <ion-nav-bar class="bar-stable">
       <ion-nav-back-button></ion-nav-back-button>
-
       <ion-nav-buttons side="left">
         <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
       </ion-nav-buttons>
     </ion-nav-bar>
+
     <ion-nav-view name="mainContent"></ion-nav-view>
   </ion-side-menu-content>
 
@@ -16,22 +17,28 @@
     </ion-header-bar>
     <ion-content>
       <ion-list>
-        <ion-item menu-close href="#/app/account">
+        <ion-item menu-close href="#/app/account" class="item item-icon-left">
+          <i class="icon ion-ios-person"></i>
           My Account
         </ion-item>
-        <ion-item menu-close href="#/app/clients">
+        <ion-item menu-close href="#/app/clients" class="item item-icon-left">
+          <i class="icon ion-ios-people"></i>
           My Clients
         </ion-item>
         <ion-item menu-close href="#/app/publications" class="item item-icon-left">
+          <i class="icon ion-android-clipboard"></i>
           Publications
         </ion-item>
-        <ion-item menu-close href="#/app/messages">
+        <ion-item menu-close href="#/app/messages" class="item item-icon-left">
+          <i class="icon ion-chatbubbles"></i>
           Messages
         </ion-item>
-        <ion-item menu-close ng-click="login()">
+        <ion-item menu-close ng-click="login()" class="item item-icon-left">
+          <i class="icon ion-log-in"></i>
           Login
         </ion-item>
-        <ion-item menu-close ng-click="register()">
+        <ion-item menu-close ng-click="register()" class="item item-icon-left">
+          <i class="icon ion-forward"></i>
           Register
         </ion-item>
       </ion-list>
