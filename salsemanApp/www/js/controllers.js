@@ -67,8 +67,6 @@ angular.module('salseManApp.controllers', [])
 			}, 1000);
 		};
 
-
-		//method to take a photo
 		$ionicPlatform.ready(function() {
 			var options = {
 				quality: 50,
@@ -81,6 +79,8 @@ angular.module('salseManApp.controllers', [])
 				popoverOptions: CameraPopoverOptions,
 				saveToPhotoAlbum: false
 			};
+
+
 			$scope.takePicture = function() {
 				$cordovaCamera.getPicture(options).then(function(imageData) {
 					$scope.registrationData.imgSrc = "data:image/jpeg;base64," + imageData;
@@ -88,12 +88,21 @@ angular.module('salseManApp.controllers', [])
 				}, function(err) {
 					console.log(err);
 				});
-
 				$scope.registerform.show();
 			};
 		});
 
+		$scope.picGallery = function() {
 
+			var galleryOpt = {
+				maximumImagesCount: 1,
+				width: 100,
+				height: 100,
+				quality: 80
+			};
+
+<<<<<<< HEAD
+=======
 		$ionicPlatform.ready(function() {
 
 
@@ -104,8 +113,8 @@ angular.module('salseManApp.controllers', [])
 			height: 100,
 			quality: 80
 		};
+>>>>>>> origin/master
 
-		$scope.picGallery = function() {
 			$cordovaImagePicker.getPictures(galleryOpt)
 				.then(function(results) {
 					for(var i = 0; i < results.lenght; i++){
@@ -115,8 +124,15 @@ angular.module('salseManApp.controllers', [])
 				}, function(error) {
 					console.log(error);
 				});
+
+
 		};
+<<<<<<< HEAD
+
+
+=======
 	});
+>>>>>>> origin/master
 	})
 
 	.controller('PublicationsCtrl', function($scope) {
