@@ -30,7 +30,7 @@
 				</label>
 				<label class="item item-input">
 					<span class="input-label">Password</span>
-					<input type="password" ng-model="registration.passwor">
+					<input type="password" ng-model="registration.password">
 				</label>
 				<label class="item item-input">
 					<span class="input-label">Image</span>
@@ -41,7 +41,7 @@
 						</ion-avatar>
 
 						<div class="item-thumbnail ">
-							<img class="padding" *ng-if="{{registration.imgSrc==null}}" ng-src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAjhAAAAJDhlMGVhZjg5LTZmMjYtNDg1ZS05MDQxLWJiODEwY2E4NTgxYw.jpg">
+							<img class="padding" *ng-if="{{registration.imgSrc==" "}}" ng-src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAjhAAAAJDhlMGVhZjg5LTZmMjYtNDg1ZS05MDQxLWJiODEwY2E4NTgxYw.jpg">
 						</div>
 
 					</div>
@@ -50,7 +50,7 @@
 					<div class="row ">
 						<div class="button-bar">
 							<button class="button  button-small button-dark button-outline icon icon-left ion-camera" ng-click="takePicture()">Take Picture</button>
-							<button class="button button-small  button-positive button-outline icon icon-left ion-android-image " ng-click="takePicture">Gallery</button>
+							<button class="button button-small  button-positive button-outline icon icon-left ion-android-image " ng-click="picGallery()">Gallery</button>
 						</div>
 					</div>
 				</label>
