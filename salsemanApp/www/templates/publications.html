@@ -1,9 +1,35 @@
-<ion-view view-title="Publication">
-  <ion-content>
+<ion-view title="Publications">
+  <ion-nav-buttons side="secondary">
+        <button class="button button-clear">
+            <i class="icon ion-plus-circled"></i>
+        </button>
+    </ion-nav-buttons>
+    <div class="tabs">
+      <ul class="tabs">
+        <li ng-class="{active:isSelected(1)}" class="tab-item">
+            <a ng-click="select(1)">All</a></li>
+        <li ng-class="{active:isSelected(2)}" class="tab-item">
+            <a ng-click="select(2)">Normals</a></li>
+        <li ng-class="{active:isSelected(3)}" class="tab-item">
+            <a ng-click="select(3)">Specials</a></li>
+    </ul>
+</div>
+<ion-content>
     <ion-list>
-      <ion-item ng-repeat="publication in publications" href="#/app/publicationDitails">
-        {{publication.title}}
-      </ion-item>
+      <div class="list card" ng-repeat="publication in publications | filter:{category: filtText}" href="#/app/publicationDitails">
+        <div class="item item-avatar">
+          <img src="{{salesman.imgage}}" alt="Image">
+          <h2>{{publication.title}}</h2>
+          <p>November 05, 1955</p>
+        </div>
+        <div class="item item-body">
+    <img class="full-image" src="{{publication.image}}" alt="Publication image">
+    <p>
+      This is a "Facebook" styled Card. The header is created from a Thumbnail List item,
+      the content is from a card-body consisting of an image and paragraph text. The footer
+      consists of tabs, icons aligned left, within the card-footer.
+    </p>
+  </div>
     </ion-list>
   </ion-content>
 </ion-view>

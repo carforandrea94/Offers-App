@@ -122,29 +122,53 @@ angular.module('salseManApp.controllers', [])
 	.controller('PublicationsCtrl', function($scope) {
 		$scope.publications = [{
 				title: 'Reggae',
-				id: 1
+				id: 1,
+				category: "Normals"
 			},
 			{
 				title: 'Chill',
-				id: 2
+				id: 2,
+				category: "Normals"
 			},
 			{
 				title: 'Dubstep',
-				id: 3
+				id: 3,
+				category: 'Normals'
 			},
 			{
 				title: 'Indie',
-				id: 4
+				id: 4,
+				category: 'Specials'
 			},
 			{
 				title: 'Rap',
-				id: 5
+				id: 5,
+				category: 'Specials'
 			},
 			{
 				title: 'Cowbell',
-				id: 6
+				id: 6,
+				category: 'Normals'
 			}
 		];
+
+		$scope.select = function(setTab) {
+							 $scope.tab = setTab;
+
+							 if (setTab === 2) {
+									 $scope.filtText = "Normals";
+							 }
+							 else if (setTab === 3) {
+									 $scope.filtText = "Specials";
+							 }
+							 else {
+									 $scope.filtText = "";
+							 }
+					 };
+
+					 $scope.isSelected = function (checkTab) {
+							 return ($scope.tab === checkTab);
+					 };
 	})
 
 	.controller('PublicationDitailsCtrl', function($scope, $stateParams) {})
