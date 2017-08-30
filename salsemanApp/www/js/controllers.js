@@ -93,9 +93,12 @@ angular.module('salseManApp.controllers', [])
 		});
 
 
+		$ionicPlatform.ready(function() {
+
+
 		//method to set a photo from gallery
 		var galleryOpt = {
-			maximumImagesCount: 1,
+			maximumImagesCount: 10,
 			width: 100,
 			height: 100,
 			quality: 80
@@ -104,12 +107,15 @@ angular.module('salseManApp.controllers', [])
 		$scope.picGallery = function() {
 			$cordovaImagePicker.getPictures(galleryOpt)
 				.then(function(results) {
-					$scope.registration.imgSrc = results[0];
-					console.log('Image URI: ' + results[0]);
+					for(var i = 0; i < results.lenght; i++){
+						console.log('Image URI: ' + results[i]);
+						$scope.registration.imgSrc = results[i];
+					}
 				}, function(error) {
 					console.log(error);
 				});
 		};
+	});
 	})
 
 	.controller('PublicationsCtrl', function($scope) {
