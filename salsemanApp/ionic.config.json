@@ -1,12 +1,12 @@
 {
-  "name": "conFusion2",
+  "name": "salsemanApp",
   "app_id": "",
   "type": "ionic1",
+  "integrations": {
+    "cordova": {},
+    "gulp": {}
+  },
   "watchPatterns": [
     "scss/**/*"
-  ],
-  "integrations": {
-    "gulp": {},
-    "cordova": {}
-  }
+  ]
 }
