@@ -11,7 +11,7 @@ angular.module('salseManApp.controllers', [])
 
 		// Form data for the login modal
 		$scope.loginData = {};
-		$scope.registeration = {};
+		$scope.registrationData = {};
 
 		// Create the login modal that we will use later
 		$ionicModal.fromTemplateUrl('templates/login.html', {
@@ -74,8 +74,8 @@ angular.module('salseManApp.controllers', [])
 				sourceType: Camera.PictureSourceType.CAMERA,
 				allowEdit: true,
 				encodingType: Camera.EncodingType.JPEG,
-				targetWidth: 100,
-				targetHeight: 100,
+				targetWidth: 50,
+				targetHeight: 50,
 				popoverOptions: CameraPopoverOptions,
 				saveToPhotoAlbum: false
 			};
@@ -83,7 +83,8 @@ angular.module('salseManApp.controllers', [])
 
 			$scope.takePicture = function() {
 				$cordovaCamera.getPicture(options).then(function(imageData) {
-					$scope.registration.imgSrc = "data:image/jpeg;base64," + imageData;
+					$scope.registrationData.imgSrc = "data:image/jpeg;base64," + imageData;
+					console.log($scope.registrationData);
 				}, function(err) {
 					console.log(err);
 				});
@@ -118,7 +119,7 @@ angular.module('salseManApp.controllers', [])
 				.then(function(results) {
 					for(var i = 0; i < results.lenght; i++){
 						console.log('Image URI: ' + results[i]);
-						$scope.registration.imgSrc = results[i];
+						$scope.registrationData.imgSrc = results[i];
 					}
 				}, function(error) {
 					console.log(error);
@@ -137,29 +138,53 @@ angular.module('salseManApp.controllers', [])
 	.controller('PublicationsCtrl', function($scope) {
 		$scope.publications = [{
 				title: 'Reggae',
-				id: 1
+				id: 1,
+				category: "Normals"
 			},
 			{
 				title: 'Chill',
-				id: 2
+				id: 2,
+				category: "Normals"
 			},
 			{
 				title: 'Dubstep',
-				id: 3
+				id: 3,
+				category: 'Normals'
 			},
 			{
 				title: 'Indie',
-				id: 4
+				id: 4,
+				category: 'Specials'
 			},
 			{
 				title: 'Rap',
-				id: 5
+				id: 5,
+				category: 'Specials'
 			},
 			{
 				title: 'Cowbell',
-				id: 6
+				id: 6,
+				category: 'Normals'
 			}
 		];
+
+		$scope.select = function(setTab) {
+							 $scope.tab = setTab;
+
+							 if (setTab === 2) {
+									 $scope.filtText = "Normals";
+							 }
+							 else if (setTab === 3) {
+									 $scope.filtText = "Specials";
+							 }
+							 else {
+									 $scope.filtText = "";
+							 }
+					 };
+
+					 $scope.isSelected = function (checkTab) {
+							 return ($scope.tab === checkTab);
+					 };
 	})
 
 	.controller('PublicationDitailsCtrl', function($scope, $stateParams) {})
@@ -170,6 +195,13 @@ angular.module('salseManApp.controllers', [])
 
 	.controller('AccountCtrl', function($scope, $stateParams) {})
 
-	.controller('MessagesCtrl', function($scope, $stateParams) {})
+	.controller('MessagesCtrl', function($scope, $stateParams) {
+		$scope.expandText = function(){
+			var element = document.getElementById("messageArea");
+			element.style.height =  element.scrollHeight + "px";
 
-;
+			$scope.clearMessage = function() {
+				var element = document.getElementById("messageArea").value = "";
+			}
+		}
+	});
