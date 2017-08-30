@@ -9,14 +9,22 @@
         "gulp-sass": "^3.1.0"
     },
     "dependencies": {
+<<<<<<< HEAD
+=======
+        "com-badrit-base64": "git+https://github.com/hazemhagrass/phonegap-base64.git",
+>>>>>>> origin/master
         "cordova-android": "^6.2.3",
         "cordova-plugin-camera": "^2.4.1",
         "cordova-plugin-compat": "^1.1.0",
         "cordova-plugin-console": "^1.0.5",
         "cordova-plugin-device": "^1.1.4",
+<<<<<<< HEAD
         "cordova-plugin-file": "^4.3.2",
         "cordova-plugin-image-picker": "git+https://github.com/wymsee/cordova-imagePicker.git",
         "cordova-plugin-photo-library": "^2.1.0",
+=======
+        "cordova-plugin-image-picker": "git+https://github.com/wymsee/cordova-imagePicker.git",
+>>>>>>> origin/master
         "cordova-plugin-splashscreen": "^4.0.3",
         "cordova-plugin-statusbar": "^2.2.1",
         "cordova-plugin-telerik-imagepicker": "git+https://github.com/Telerik-Verified-Plugins/ImagePicker.git",
@@ -32,11 +40,17 @@
             "cordova-plugin-statusbar": {},
             "cordova-plugin-whitelist": {},
             "ionic-plugin-keyboard": {},
+<<<<<<< HEAD
             "cordova-plugin-photo-library": {
                 "PHOTO_LIBRARY_USAGE_DESCRIPTION": "To choose photos"
             },
             "cordova-plugin-camera": {},
             "cordova-plugin-image-picker": {}
+=======
+            "cordova-plugin-camera": {},
+            "cordova-plugin-image-picker": {},
+            "com-badrit-base64": {}
+>>>>>>> origin/master
         },
         "platforms": [
             "android"
