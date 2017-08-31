@@ -254,7 +254,42 @@ angular.module('salseManApp.controllers', [])
 
 	.controller('ClientDetailsCtrl', function($scope, $stateParams) {})
 
-	.controller('AccountCtrl', function($scope, $stateParams) {})
+	.controller('AccountCtrl', function($scope, $stateParams, $ionicPopup) {
+
+		$scope.modify = false;
+
+		$scope.toggleDitails = function() {
+			$scope.modify = !$scope.modify;
+		};
+
+		$scope.getState = function() {
+			return $scope.modify;
+		};
+
+
+		$scope.saveChanges = function() {
+
+			var confirmPopup = $ionicPopup.confirm({
+				title: 'Confirm to Save th Changes',
+				template: 'Are you sure you want to save the changes?'
+			});
+
+			confirmPopup.then(function(res) {
+				if (res) {
+					console.log('Ok to delete');
+
+
+				} else {
+					console.log('Canceled delete');
+				}
+			});
+
+		};
+
+
+
+
+	})
 
 	.controller('MessagesCtrl', function($scope, $stateParams, $ionicModal, $ionicFilterBar) {
 

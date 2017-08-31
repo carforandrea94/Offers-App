@@ -1,5 +1,102 @@
 <ion-view view-title="My Account">
+
+  <ion-nav-buttons side="secondary">
+    <button class="button button-clear" ng-click="toggleDitails()" ng-class="{active:!getState()}">
+      <i class="icon ion-edit"></i>
+    </button>
+  </ion-nav-buttons >
+
+  <!--<i class="icon ion-android-share-alt"></i>-->
+
   <ion-content>
-    <h1>My Account</h1>
+
+    <form ng-If="getState()">
+
+      <div class="list">
+        <label class="item item-thumbnail">
+          <img src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAjhAAAAJDhlMGVhZjg5LTZmMjYtNDg1ZS05MDQxLWJiODEwY2E4NTgxYw.jpg">
+          <div class="buttons-bar">
+            <button class="button button-small button-positive" end>Change Image</button>
+          </div>
+        </label>
+
+        <label class="item item-input">
+          <span class="input-label">First Name</span>
+          <input type="text" ng-model="salsman.firstname">
+        </label>
+
+        <label class="item item-input">
+          <span class="input-label">Last Name</span>
+          <input type="text" ng-model="salseman.lastname">
+        </label>
+
+        <label class="item item-input">
+          <span class="input-label">Username</span>
+          <input type="text" ng-model="salseman.username">
+        </label>
+
+        <label class="item item-input">
+          <span class="input-label">Telephone Number</span>
+          <input type="tel" ng-model="salseman.telnum">
+        </label>
+
+        <label class="item item-input">
+          <span class="input-label">Email</span>
+          <input type="email" ng-model="salseman.email">
+        </label>
+
+        <label class="item item-input">
+          <span class="input-label">Password</span>
+          <input type="password" ng-model="salseman.password">
+        </label>
+
+      </div>
+      <div class="button-bar">
+        <button class="button button-dark button-full button-right ">Cancel</button>
+        <button class="button button-positive button-full button-right " ng-click="saveChanges()">Save Changes</button>
+      </div>
+
+    </form>
+
+    <div class="list" ng-If="!getState()">
+      <label class="item item-thumbnail">
+        <img src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAjhAAAAJDhlMGVhZjg5LTZmMjYtNDg1ZS05MDQxLWJiODEwY2E4NTgxYw.jpg">
+      </label>
+
+      <label class="item item-input">
+        <span class="input-label">First Name</span>
+        SalsMan
+      </label>
+
+      <label class="item item-input">
+        <span class="input-label">Last Name</span>
+        User
+      </label>
+
+      <label class="item item-input">
+        <span class="input-label">Username</span>
+        salsemanUser1
+        <button class="button button-small button-clear button-positive">
+          <i class="icon ion-android-share-alt"></i>
+
+        </button>
+      </label>
+
+      <label class="item item-input">
+        <span class="input-label">Telephone Number</span>
+        324-3454231234
+      </label>
+
+      <label class="item item-input">
+        <span class="input-label">Email</span>
+        salsemanUser1@offers.com
+      </label>
+
+      <label class="item item-input">
+        <span class="input-label">Password</span>
+        admin
+      </label>
+    </div>
+
   </ion-content>
 </ion-view>
