@@ -87,6 +87,7 @@ angular.module('salseManApp.controllers', [])
 					console.log($scope.registrationData);
 				}, function(err) {
 					console.log(err);
+					$scope.registerform.show();
 				});
 
 				$scope.registerform.show();
@@ -113,10 +114,14 @@ angular.module('salseManApp.controllers', [])
 							$scope.registrationData.imgSrc = results[i];
 						}
 					}, function(error) {
+						$scope.registerform.show();
 						console.log(error);
 					});
+				$scope.registerform.show();
 			};
+
 		});
+
 	})
 
 	.controller('PublicationsCtrl', function($scope) {
@@ -155,7 +160,6 @@ angular.module('salseManApp.controllers', [])
 
 		$scope.select = function(setTab) {
 			$scope.tab = setTab;
-
 			if (setTab === 2) {
 				$scope.filtText = "Normals";
 			} else if (setTab === 3) {
@@ -168,17 +172,52 @@ angular.module('salseManApp.controllers', [])
 		$scope.isSelected = function(checkTab) {
 			return ($scope.tab === checkTab);
 		};
+
+
 	})
 
 	.controller('PublicationDitailsCtrl', function($scope, $stateParams) {})
 
-	.controller('ClientsCtrl', function($scope, $stateParams) {})
+
+
+
+	.controller('ClientsCtrl', function($scope, $stateParams) {
+		$scope.clients = [{
+			name: 'Client',
+			lastname: 'User',
+			email: 'clientuser@offersApp.com',
+			image: 'https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAjhAAAAJDhlMGVhZjg5LTZmMjYtNDg1ZS05MDQxLWJiODEwY2E4NTgxYw.jpg'
+		}];
+	})
+
+
+
+
+
 
 	.controller('ClientDitailsCtrl', function($scope, $stateParams) {})
 
 	.controller('AccountCtrl', function($scope, $stateParams) {})
 
-	.controller('MessagesCtrl', function($scope, $stateParams) {
+	.controller('MessagesCtrl', function($scope, $stateParams, $ionicModal) {
+
+		$ionicModal.fromTemplateUrl('templates/newMessages.html', {
+			scope: $scope
+		}).then(function(modal) {
+			$scope.modal = modal;
+		});
+
+		// Triggered in the login modal to close it
+		$scope.closeNewMessage = function() {
+			$scope.modal.hide();
+		};
+
+		// Open the login modal
+		$scope.openNewMessage = function() {
+			$scope.modal.show();
+		};
+
+
 		$scope.expandText = function() {
 			var element = document.getElementById("messageArea");
 			element.style.height = element.scrollHeight + "px";

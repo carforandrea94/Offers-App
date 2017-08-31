@@ -4,16 +4,19 @@
       <i class="icon ion-plus-circled"></i>
     </button>
   </ion-nav-buttons>
-  <div class="tabs">
+  <div class="tabs tabs-icon-top">
     <ul class="tabs">
-      <li ng-class="{active:isSelected(1)}" class="tab-item">
-        <a ng-click="select(1)">All</a>
+      <li ng-class="{active: active:isSelected(1)}" class="tab-item" ng-click="select(1)">
+        <i class="icon ion-ios-filing"></i>
+        All
       </li>
-      <li ng-class="{active:isSelected(2)}" class="tab-item">
-        <a ng-click="select(2)">Normals</a>
+      <li ng-class="{active:isSelected(2)}" class="tab-item" ng-click="select(2)" side="right">
+        <i class="icon ion-android-clipboard"></i>
+        Normals
       </li>
-      <li ng-class="{active:isSelected(3)}" class="tab-item">
-        <a ng-click="select(3)">Specials</a>
+      <li ng-class="{active:isSelected(3)}" class="tab-item" ng-click="select(3)" side="right">
+        <i class="icon ion-ios-star"></i>
+        Specials
       </li>
     </ul>
   </div>
