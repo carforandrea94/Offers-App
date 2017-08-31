@@ -30,7 +30,7 @@
 				</label>
 				<label class="item item-input">
 					<span class="input-label">Password</span>
-					<input type="password" ng-model="registration.password">
+					<input type="password" ng-model="registration.passwor">
 				</label>
 				<label class="item item-input">
 					<span class="input-label">Image</span>
@@ -41,7 +41,7 @@
 						</ion-avatar>
 
 						<div class="item-thumbnail ">
-							<img class="padding" *ng-if="{{registration.imgSrc==" "}}" ng-src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAjhAAAAJDhlMGVhZjg5LTZmMjYtNDg1ZS05MDQxLWJiODEwY2E4NTgxYw.jpg">
+							<img class="padding" *ng-if="{{registration.imgSrc==null}}" ng-src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAjhAAAAJDhlMGVhZjg5LTZmMjYtNDg1ZS05MDQxLWJiODEwY2E4NTgxYw.jpg">
 						</div>
 
 					</div>
@@ -59,7 +59,7 @@
 		<ion-footer-bar align-title="right" class="bar-positive">
 			<button class="button button-clear icon icon-right ion-forward" type="submit">
 				<strong>Register</strong>
-			</label>
+			</button>
 		</ion-footer-bar>
 	</form>
 </ion-modal-view>

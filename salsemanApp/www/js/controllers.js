@@ -67,6 +67,8 @@ angular.module('salseManApp.controllers', [])
 			}, 1000);
 		};
 
+
+		//method to take a photo
 		$ionicPlatform.ready(function() {
 			var options = {
 				quality: 50,
@@ -79,8 +81,6 @@ angular.module('salseManApp.controllers', [])
 				popoverOptions: CameraPopoverOptions,
 				saveToPhotoAlbum: false
 			};
-
-
 			$scope.takePicture = function() {
 				$cordovaCamera.getPicture(options).then(function(imageData) {
 					$scope.registrationData.imgSrc = "data:image/jpeg;base64," + imageData;
@@ -88,126 +88,103 @@ angular.module('salseManApp.controllers', [])
 				}, function(err) {
 					console.log(err);
 				});
+
 				$scope.registerform.show();
 			};
 		});
 
-		$scope.picGallery = function() {
 
+		$ionicPlatform.ready(function() {
+
+
+			//method to set a photo from gallery
 			var galleryOpt = {
-				maximumImagesCount: 1,
+				maximumImagesCount: 10,
 				width: 100,
 				height: 100,
 				quality: 80
 			};
 
-			<<
-			<< << < HEAD
-				===
-				=== =
-				$ionicPlatform.ready(function() {
-
-
-						//method to set a photo from gallery
-						var galleryOpt = {
-							maximumImagesCount: 10,
-							width: 100,
-							height: 100,
-							quality: 80
-						}; >>>
-						>>> > origin / master
-
-						$cordovaImagePicker.getPictures(galleryOpt)
-							.then(function(results) {
-								for (var i = 0; i < results.lenght; i++) {
-									console.log('Image URI: ' + results[i]);
-									$scope.registrationData.imgSrc = results[i];
-								}
-							}, function(error) {
-								console.log(error);
-							});
-
-
-					}; <<
-					<< << < HEAD
-
-
-					===
-					=== =
-				}); >>>
-		>>> > origin / master
+			$scope.picGallery = function() {
+				$cordovaImagePicker.getPictures(galleryOpt)
+					.then(function(results) {
+						for (var i = 0; i < results.lenght; i++) {
+							console.log('Image URI: ' + results[i]);
+							$scope.registrationData.imgSrc = results[i];
+						}
+					}, function(error) {
+						console.log(error);
+					});
+			};
+		});
 	})
 
 	.controller('PublicationsCtrl', function($scope) {
-			$scope.publications = [{
-						title: 'Publication Title',
-						description: 'Some Description',
-						special: false,
-						image: 'img/cioco.jpg'
-					},
-					{
-						title: 'Publication Title',
-						description: 'Some Description',
-						special: false,
-						image: 'img/cioco.jpg'
-					},
-					{
-						{
-							title: 'Publication Title',
-							description: 'Some Description',
-							special: false,
-							image: 'img/cioco.jpg'
-						},
-						{
-							title: 'Publication Title',
-							description: 'Some Description',
-							special: false,
-							image: 'img/cioco.jpg'
-						},
-						{
-							title: 'Publication Title',
-							description: 'Some Description',
-							special: false,
-							image: 'img/cioco.jpg' {
-								title: 'Publication Title',
-								description: 'Some Description',
-								special: false,
-								image: 'img/cioco.jpg'
-							}
-						];
+		$scope.publications = [{
+				title: 'Reggae',
+				id: 1,
+				type: 'Normals'
+			},
+			{
+				title: 'Chill',
+				id: 2,
+				type: 'Normals'
+			},
+			{
+				title: 'Dubstep',
+				id: 3,
+				type: 'Normals'
+			},
+			{
+				title: 'Indie',
+				id: 4,
+				type: 'Normals'
 
-						$scope.select = function(setTab) {
-							$scope.tab = setTab;
+			},
+			{
+				title: 'Rap',
+				id: 5,
+				type: 'Specials'
+			},
+			{
+				title: 'Cowbell',
+				id: 6,
+				type: 'Specials'
+			}
+		];
 
-							if (setTab === 2) {
-								$scope.filtText = "Normals";
-							} else if (setTab === 3) {
-								$scope.filtText = "Specials";
-							} else {
-								$scope.filtText = "";
-							}
-						};
+		$scope.select = function(setTab) {
+			$scope.tab = setTab;
 
-						$scope.isSelected = function(checkTab) {
-							return ($scope.tab === checkTab);
-						};
-					})
+			if (setTab === 2) {
+				$scope.filtText = "Normals";
+			} else if (setTab === 3) {
+				$scope.filtText = "Specials";
+			} else {
+				$scope.filtText = "";
+			}
+		};
 
-				.controller('PublicationDitailsCtrl', function($scope, $stateParams) {})
+		$scope.isSelected = function(checkTab) {
+			return ($scope.tab === checkTab);
+		};
+	})
 
-				.controller('ClientsCtrl', function($scope, $stateParams) {})
+	.controller('PublicationDitailsCtrl', function($scope, $stateParams) {})
 
-				.controller('ClientDitailsCtrl', function($scope, $stateParams) {})
+	.controller('ClientsCtrl', function($scope, $stateParams) {})
 
-				.controller('AccountCtrl', function($scope, $stateParams) {})
+	.controller('ClientDitailsCtrl', function($scope, $stateParams) {})
 
-				.controller('MessagesCtrl', function($scope, $stateParams) {
-					$scope.expandText = function() {
-						var element = document.getElementById("messageArea");
-						element.style.height = element.scrollHeight + "px";
+	.controller('AccountCtrl', function($scope, $stateParams) {})
 
-						$scope.clearMessage = function() {
-							var element = document.getElementById("messageArea").value = "";
-						}
-					}
-				});
+	.controller('MessagesCtrl', function($scope, $stateParams) {
+		$scope.expandText = function() {
+			var element = document.getElementById("messageArea");
+			element.style.height = element.scrollHeight + "px";
+
+			$scope.clearMessage = function() {
+				var element = document.getElementById("messageArea").value = "";
+			}
+		}
+	});
