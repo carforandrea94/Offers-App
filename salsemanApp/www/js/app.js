@@ -1,4 +1,4 @@
-angular.module('salseManApp', ['ionic', 'ngCordova', 'salseManApp.controllers', 'salseManApp.services'])
+angular.module('salseManApp', ['ionic', 'jett.ionic.filter.bar', 'ion-floating-menu', 'ngCordova', 'salseManApp.controllers', 'salseManApp.services'])
 
 	.run(function($ionicPlatform) {
 		$ionicPlatform.ready(function() {
@@ -49,12 +49,12 @@ angular.module('salseManApp', ['ionic', 'ngCordova', 'salseManApp.controllers', 
 
 
 
-			.state('app.publicationDitails', {
-				url: '/publicationDitails',
+			.state('app.publicationDetails', {
+				url: '/publicationDetails',
 				views: {
 					'mainContent': {
-						templateUrl: 'templates/publicationDitails.html',
-						controller: 'PublicationDitailsCtrl'
+						templateUrl: 'templates/publicationDetails.html',
+						controller: 'PublicationDetailsCtrl'
 					}
 				}
 			})
@@ -79,12 +79,22 @@ angular.module('salseManApp', ['ionic', 'ngCordova', 'salseManApp.controllers', 
 				}
 			})
 
-			.state('app.clientDitails', {
-				url: '/clientDitails',
+			.state('app.messagesDetails', {
+				url: '/messagesDetails',
 				views: {
 					'mainContent': {
-						templateUrl: 'templates/clientDitails.html',
-						controller: 'ClientDitailsCtrl'
+						templateUrl: 'templates/messagesDetails.html',
+						controller: 'MessagesDetailsCtrl'
+					}
+				}
+			})
+
+			.state('app.clientDetails', {
+				url: '/clientDetails',
+				views: {
+					'mainContent': {
+						templateUrl: 'templates/clientDetails.html',
+						controller: 'ClientDetailsCtrl'
 					}
 				}
 

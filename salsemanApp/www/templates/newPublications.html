@@ -1,0 +1,42 @@
+<ion-modal-view>
+	<ion-header-bar>
+		<h1 class="title">New Publication</h1>
+		<div class="buttons">
+			<button class="button button-clear button-dark" ng-click="closeNewPublication()">Close</button>
+		</div>
+	</ion-header-bar>
+	<ion-content>
+		<div class="list">
+			<label class="item item-input">
+				<span class="input-label">Publication's title</span>
+				<input type="text">
+			</label>
+			<div class="row responsive-sm">
+				<div class="col col-100">
+					<label class="item item-input item-stacked-label">
+						<span class="input-label">Description</span>
+						<textarea id="descriptionArea" placeholder="Write the description here" ng-keyup="expandText()" ng-keydown="expandText()"></textarea>
+					</label>
+				</div>
+			</div>
+			<div class="row ">
+			<div class="col col-40">
+				<ion-checkbox>Special</ion-checkbox>
+			</div>
+			</div>
+			<div class="row ">
+			<div class="col col-40">
+			<button class="button  button-small button-dark button-outline icon icon-left ion-camera" ng-click="">Select Image</button>
+			</div>
+			</div>
+			<div class="row">
+				<div class="col col-offset-50">
+					<button class="button button-dark" ng-click="clearMessage()">Clear</button>
+				</div>
+				<div class="col">
+					<button class="button button-positive">Send</button>
+				</div>
+			</div>
+		</div>
+	</ion-content>
+</ion-modal-view>

@@ -1,24 +1,20 @@
 <ion-view view-title="Messages">
 	<ion-nav-buttons side="secondary">
-		<button class="button button-clear" ng-click="openNewMessage()">
-			<i class="icon ion-plus-circled"></i>
-		</button>
-	</ion-nav-buttons>
+	<button class="buttons button-icon ion-android-search" ng-click="showFilterBar()"></button>
+</ion-nav-buttons>
+<ion-floating-button click="openNewMessage()" has-footer="false" button-color="#2AC9AA" icon="ion-plus" icon-color="#fff">
+</ion-floating-button>
 	<ion-content>
-		<ion-list>
-			<div class="list card" ng-repeat="publication in publications | filter:{type: filtText}" href="#/app/publicationDitails">
-				<div class="item item-avatar">
-					<img src="{{salesman.image}}" alt="Image">
-					<h2>{{publication.title}}</h2>
-					<p>November 05, 1955</p>
-				</div>
-				<div class="item item-body">
-					<img class="full-image" src="{{publication.image}}" alt="Publication image">
-					<p>
-						This is a "Facebook" styled Card. The header is created from a Thumbnail List item, the content is from a card-body consisting of an image and paragraph text. The footer consists of tabs, icons aligned left, within the card-footer.
-					</p>
-				</div>
-			</div>
-		</ion-list>
+		<div class="list">
+
+
+    <a class="item item-avatar item item-icon-right" href="#/app/messagesDetails" ng-repeat="message in messages">
+			<img src="{{message.image}}">
+			<i class="icon ion-ios-arrow-forward"></i>
+      <h2>{{message.to}}</h2>
+      <p>{{message.message}}</p>
+    </a>
+
+	</div>
 	</ion-content>
 </ion-view>

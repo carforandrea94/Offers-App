@@ -1,6 +1,6 @@
 <ion-view view-title="Publications">
   <ion-nav-buttons side="secondary">
-    <button class="button button-clear">
+    <button class="button button-clear" ng-click="openNewPublication()">
       <i class="icon ion-plus-circled"></i>
     </button>
   </ion-nav-buttons>
@@ -22,7 +22,8 @@
   </div>
   <ion-content>
     <ion-list>
-      <div class="list card" ng-repeat="publication in publications | filter:{type: filtText}" href="#/app/publicationDitails">
+      <a href="#/app/publicationDetails" style="text-decoration : none">
+      <div class="list card" ng-repeat="publication in publications | filter:{type: filtText}" >
         <div class="item item-avatar">
           <img src="{{salesman.image}}" alt="Image">
           <h2>{{publication.title}}</h2>
@@ -35,6 +36,7 @@
           </p>
         </div>
       </div>
+    </a>
     </ion-list>
   </ion-content>
 </ion-view>

@@ -17,17 +17,17 @@ angular.module('salseManApp.controllers', [])
 		$ionicModal.fromTemplateUrl('templates/login.html', {
 			scope: $scope
 		}).then(function(modal) {
-			$scope.modal = modal;
+			$scope.loginModal = modal;
 		});
 
 		// Triggered in the login modal to close it
 		$scope.closeLogin = function() {
-			$scope.modal.hide();
+			$scope.loginModal.hide();
 		};
 
 		// Open the login modal
 		$scope.login = function() {
-			$scope.modal.show();
+			$scope.loginModal.show();
 		};
 
 		// Perform the login action when the user submits the login form
@@ -124,7 +124,33 @@ angular.module('salseManApp.controllers', [])
 
 	})
 
-	.controller('PublicationsCtrl', function($scope) {
+	.controller('PublicationsCtrl', function($scope, $ionicModal) {
+		$ionicModal.fromTemplateUrl('templates/newPublications.html', {
+			scope: $scope
+		}).then(function(modal) {
+			$scope.modal = modal;
+		});
+
+		// Triggered in the login modal to close it
+		$scope.closeNewPublication = function() {
+			$scope.modal.hide();
+		};
+
+		// Open the login modal
+		$scope.openNewPublication = function() {
+			$scope.modal.show();
+		};
+
+
+		$scope.expandText = function() {
+			var element = document.getElementById("descriptionArea");
+			element.style.height = element.scrollHeight + "px";
+
+			$scope.clearMessage = function() {
+				var element = document.getElementById("descriptionArea").value = "";
+			}
+		}
+
 		$scope.publications = [{
 				title: 'Reggae',
 				id: 1,
@@ -174,20 +200,51 @@ angular.module('salseManApp.controllers', [])
 		};
 
 
+
+
 	})
 
-	.controller('PublicationDitailsCtrl', function($scope, $stateParams) {})
+	.controller('PublicationDetailsCtrl', function($scope, $stateParams) {})
+	.controller('MessagesDetailsCtrl', function($scope, $stateParams) {})
 
 
 
 
-	.controller('ClientsCtrl', function($scope, $stateParams) {
+	.controller('ClientsCtrl', function($scope, $ionicFilterBar, $ionicActionSheet) {
 		$scope.clients = [{
-			name: 'Client',
-			lastname: 'User',
+			id: 0,
+			name: 'Client1',
+			lastname: 'User1',
+			email: 'clientuser@offersApp.com',
+			image: 'https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAjhAAAAJDhlMGVhZjg5LTZmMjYtNDg1ZS05MDQxLWJiODEwY2E4NTgxYw.jpg'
+		},{
+			id: 1,
+			name: 'Client2',
+			lastname: 'User2',
+			email: 'clientuser@offersApp.com',
+			image: 'https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAjhAAAAJDhlMGVhZjg5LTZmMjYtNDg1ZS05MDQxLWJiODEwY2E4NTgxYw.jpg'
+		}, {
+			id: 2,
+			name: 'Client3',
+			lastname: 'User3',
 			email: 'clientuser@offersApp.com',
 			image: 'https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAjhAAAAJDhlMGVhZjg5LTZmMjYtNDg1ZS05MDQxLWJiODEwY2E4NTgxYw.jpg'
 		}];
+
+		$scope.showFilterBar = function () {
+      filterBarInstance = $ionicFilterBar.show({
+        items: $scope.clients,
+        update: function (filteredItems) {
+          $scope.clients = filteredItems;
+        },
+        filterProperties: 'name'
+      });
+    };
+
+		//function to add a client
+		$scope.addClient = function() {
+			//put the function here
+		}
 	})
 
 
@@ -195,11 +252,28 @@ angular.module('salseManApp.controllers', [])
 
 
 
-	.controller('ClientDitailsCtrl', function($scope, $stateParams) {})
+	.controller('ClientDetailsCtrl', function($scope, $stateParams) {})
 
 	.controller('AccountCtrl', function($scope, $stateParams) {})
 
-	.controller('MessagesCtrl', function($scope, $stateParams, $ionicModal) {
+	.controller('MessagesCtrl', function($scope, $stateParams, $ionicModal, $ionicFilterBar) {
+
+		$scope.messages = [{
+			to: 'Client1',
+			email: 'clientuser@offersApp.com',
+			image: 'https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAjhAAAAJDhlMGVhZjg5LTZmMjYtNDg1ZS05MDQxLWJiODEwY2E4NTgxYw.jpg',
+			message: 'This is a "Facebook" styled Card. The header is created from a Thumbnail List item, the content is from a card-body consisting of an image and paragraph text. The footer consists of tabs, icons aligned left, within the card-footer.'
+		},{
+			to: 'Client2',
+			email: 'clientuser@offersApp.com',
+			image: 'https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAjhAAAAJDhlMGVhZjg5LTZmMjYtNDg1ZS05MDQxLWJiODEwY2E4NTgxYw.jpg',
+			message: 'This is a "Facebook" styled Card. The header is created from a Thumbnail List item, the content is from a card-body consisting of an image and paragraph text. The footer consists of tabs, icons aligned left, within the card-footer.'
+		}, {
+			to: 'Client3',
+			email: 'clientuser@offersApp.com',
+			image: 'https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAjhAAAAJDhlMGVhZjg5LTZmMjYtNDg1ZS05MDQxLWJiODEwY2E4NTgxYw.jpg',
+			message: 'This is a "Facebook" styled Card. The header is created from a Thumbnail List item, the content is from a card-body consisting of an image and paragraph text. The footer consists of tabs, icons aligned left, within the card-footer.'
+		}];
 
 		$ionicModal.fromTemplateUrl('templates/newMessages.html', {
 			scope: $scope
@@ -226,4 +300,14 @@ angular.module('salseManApp.controllers', [])
 				var element = document.getElementById("messageArea").value = "";
 			}
 		}
+
+		$scope.showFilterBar = function () {
+      filterBarInstance = $ionicFilterBar.show({
+        items: $scope.messages,
+        update: function (filteredItems) {
+          $scope.messages = filteredItems;
+        },
+        filterProperties: 'to'
+      });
+    };
 	});
