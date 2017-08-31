@@ -192,12 +192,20 @@ angular.module('salseManApp.controllers', [])
 
 
 
-
-
-
 	.controller('ClientDitailsCtrl', function($scope, $stateParams) {})
 
-	.controller('AccountCtrl', function($scope, $stateParams) {})
+	.controller('AccountCtrl', function($scope, $stateParams) {
+		var modify = false;
+
+		$scope.toggleDetails = function() {
+			modify = !modify;
+		};
+
+		$scope.getState = function() {
+			return modify;
+		};
+
+	})
 
 	.controller('MessagesCtrl', function($scope, $stateParams, $ionicModal) {
 
