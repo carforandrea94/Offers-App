@@ -1,25 +1,26 @@
 <ion-view view-title="Messages">
 	<ion-content>
 		<div class="list">
-	  <label class="item item-input">
-	    <span class="input-label">Client's username</span>
-	    <input type="text">
-	  </label>
-		<div class="row responsive-sm">
-			<div class="col col-100">
-		<label class="item item-input item-stacked-label">
-    <span class="input-label">Message</span>
-    <textarea id="messageArea" placeholder="Write the message here" ng-keyup="expandText()" ng-keydown="expandText()"></textarea>
-  </label>
-</div>
-	</div>
-	<div class="row">
-		<div class="col col-offset-50">
-		<button class="button button-dark" ng-click="clearMessage()">Clear</button>
-	</div>
-	<div class="col">
-		<button class="button button-positive">Send</button>
-	</div>
+			<label class="item item-input">
+				<span class="input-label">Client's username</span>
+				<input type="text">
+			</label>
+			<div class="row responsive-sm">
+				<div class="col col-100">
+					<label class="item item-input item-stacked-label">
+						<span class="input-label">Message</span>
+						<textarea id="messageArea" placeholder="Write the message here" ng-keyup="expandText()" ng-keydown="expandText()"></textarea>
+					</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col col-offset-50">
+					<button class="button button-dark" ng-click="clearMessage()">Clear</button>
+				</div>
+				<div class="col">
+					<button class="button button-positive">Send</button>
+				</div>
+			</div>
+		</div>
 	</ion-content>
-</div>
 </ion-view>
