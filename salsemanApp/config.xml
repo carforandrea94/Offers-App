@@ -18,6 +18,7 @@
     <preference name="android-minSdkVersion" value="16" />
     <preference name="BackupWebStorage" value="none" />
     <preference name="SplashMaintainAspectRatio" value="true" />
+    <preference name="AndroidPersistentFileLocation" value="Compatibility" />
     <preference name="FadeSplashScreenDuration" value="300" />
     <preference name="SplashShowOnlyFirstTime" value="false" />
     <preference name="SplashScreen" value="screen" />
@@ -84,7 +85,8 @@
     <plugin name="cordova-plugin-camera" spec="git+https://github.com/apache/cordova-plugin-camera.git" />
     <plugin name="cordova-plugin-console" spec="^1.0.5" />
     <plugin name="cordova-plugin-device" spec="^1.1.4" />
-    <plugin name="cordova-plugin-image-picker" spec="git+https://github.com/wymsee/cordova-imagePicker.git" />
+    <plugin name="cordova-plugin-file" spec="^4.0.0" />
+    <plugin name="cordova-plugin-imagepicker" spec="^1.2.1" />
     <plugin name="cordova-plugin-keyboard" spec="^1.1.5" />
     <plugin name="cordova-plugin-media-capture" spec="^1.4.3" />
     <plugin name="cordova-plugin-splashscreen" spec="^4.0.3" />

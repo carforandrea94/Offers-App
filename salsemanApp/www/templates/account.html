@@ -15,8 +15,8 @@
       <div class="list">
         <label class="item item-thumbnail">
           <img src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAjhAAAAJDhlMGVhZjg5LTZmMjYtNDg1ZS05MDQxLWJiODEwY2E4NTgxYw.jpg">
-          <div class="buttons-bar">
-            <button class="button button-small button-positive" end>Change Image</button> 
+          <div class="buttons">
+            <button class="button button-block button-outline button-positive" ng-click="picGallery()" end>Change Image</button>
           </div>
         </label>
 
@@ -51,9 +51,15 @@
         </label>
 
       </div>
-      <div class="button-bar">
-        <button class="button button-dark button-full button-right ">Cancel</button>
-        <button class="button button-positive button-full button-right " ng-click="saveChanges()">Save Changes</button>
+      <div class="grid">
+        <div class="row">
+          <div class="col col-50">
+            <button class="button button-dark button-block button-right ">Cancel</button>
+          </div>
+          <div class="col col-50">
+            <button class="button button-positive button-block button-right " ng-click="saveChanges()">Save Changes</button>
+          </div>
+        </div>
       </div>
 
     </form>

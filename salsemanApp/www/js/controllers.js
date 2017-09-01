@@ -67,8 +67,6 @@ angular.module('salseManApp.controllers', [])
 			}, 1000);
 		};
 
-
-		//method to take a photo
 		$ionicPlatform.ready(function() {
 			var options = {
 				quality: 50,
@@ -76,54 +74,51 @@ angular.module('salseManApp.controllers', [])
 				sourceType: Camera.PictureSourceType.CAMERA,
 				allowEdit: true,
 				encodingType: Camera.EncodingType.JPEG,
-				targetWidth: 50,
-				targetHeight: 50,
+				targetWidth: 100,
+				targetHeight: 100,
 				popoverOptions: CameraPopoverOptions,
 				saveToPhotoAlbum: false
 			};
+
 			$scope.takePicture = function() {
 				$cordovaCamera.getPicture(options).then(function(imageData) {
-					$scope.registrationData.imgSrc = "data:image/jpeg;base64," + imageData;
-					console.log($scope.registrationData);
+					$scope.registration.imgSrc = "data:image/jpeg;base64," + imageData;
 				}, function(err) {
 					console.log(err);
 					$scope.registerform.show();
 				});
-
 				$scope.registerform.show();
 			};
-		});
-
+		}); //end ionicPlatform of tacke picture
 
 		$ionicPlatform.ready(function() {
 
-
-			//method to set a photo from gallery
 			var galleryOpt = {
-				maximumImagesCount: 10,
-				sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-				width: 100,
-				height: 100,
-				quality: 80
+				quality: 50,
+				targetWidth: 100,
+				targetHeight: 100,
+				saveToPhotoAlbum: false
 			};
 
 			$scope.picGallery = function() {
 				$cordovaImagePicker.getPictures(galleryOpt)
 					.then(function(results) {
-						for (var i = 0; i < results.lenght; i++) {
+						for (var i = 0; i < results.length; i++) {
 							console.log('Image URI: ' + results[i]);
-							$scope.registrationData.imgSrc = results[i];
+							$scope.registration.imgSrc = results[0];
 						}
 					}, function(error) {
-						$scope.registerform.show();
 						console.log(error);
+						$scope.registerform.show();
+						// error getting photos
 					});
+
 				$scope.registerform.show();
 			};
+		}); //end ionicPlatform of gallery
 
-		});
 
-	})
+	}) //end controller
 
 	.controller('PublicationsCtrl', function($scope, $ionicModal) {
 		$ionicModal.fromTemplateUrl('templates/newPublications.html', {
@@ -200,13 +195,10 @@ angular.module('salseManApp.controllers', [])
 			return ($scope.tab === checkTab);
 		};
 
+	}) //end controller
 
-
-
-	})
-
-	.controller('PublicationDetailsCtrl', function($scope, $stateParams) {})
-	.controller('MessagesDetailsCtrl', function($scope, $stateParams) {})
+	.controller('PublicationDetailsCtrl', function($scope, $stateParams) {}) //end controller
+	.controller('MessagesDetailsCtrl', function($scope, $stateParams) {}) //end controller
 
 
 
@@ -284,11 +276,7 @@ angular.module('salseManApp.controllers', [])
 					console.log('Canceled delete');
 				}
 			});
-
-		};
-
-
-
+		}; //end function saveChanges
 
 	})
 

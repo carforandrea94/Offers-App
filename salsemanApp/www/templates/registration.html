@@ -43,17 +43,14 @@
 						<div class="item-thumbnail ">
 							<img class="padding" *ng-if="{{registration.imgSrc==null}}" ng-src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAjhAAAAJDhlMGVhZjg5LTZmMjYtNDg1ZS05MDQxLWJiODEwY2E4NTgxYw.jpg">
 						</div>
+						<div class="buttons" end>
+							<button class="button  button-block button-dark button-outline icon icon-left ion-camera" ng-click="takePicture()">Take Picture</button>
+							<button class="button button-block  button-positive button-outline icon icon-left ion-image " ng-click="picGallery()">Gallery</button>
+						</div>
 
 					</div>
 				</label>
-				<label class="item item-input">
-					<div class="row ">
-						<div class="button-bar">
-							<button class="button  button-small button-dark button-outline icon icon-left ion-camera" ng-click="takePicture()">Take Picture</button>
-							<button class="button button-small  button-positive button-outline icon icon-left ion-image " ng-click="picGallery()">Gallery</button>
-						</div>
-					</div>
-				</label>
+
 			</div>
 		</ion-content>
 		<ion-footer-bar align-title="right" class="bar-positive">
