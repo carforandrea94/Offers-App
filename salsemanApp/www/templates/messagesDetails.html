@@ -1,5 +1,17 @@
-<ion-view view-title="Conversation">
-  <ion-content>
-    <h1>Messages</h1>
-  </ion-content>
-</ion-view>
+<ion-modal-view>
+
+  <ion-header-bar align-title="left">
+    <button class="button button-clear  button-dark  icon ion-ios-arrow-back" ng-click="closeMessagesDetails()"></button>
+    <h2 class="title">
+      User 1
+    </h2>
+  </ion-header-bar>
+
+  <ion-content></ion-content>
+
+  <ion-footer-bar keyboard-attach class="bar-stable item-input-inset">
+    <textarea cols="50" placeholder="Message..."></textarea>
+    <button class="button button-clear  button-positive icon ion-android-send" ng-click="sendMessage()"></button>
+  </ion-footer-bar>
+
+</ion-modal-view>

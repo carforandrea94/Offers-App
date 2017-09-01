@@ -101,6 +101,7 @@ angular.module('salseManApp.controllers', [])
 			//method to set a photo from gallery
 			var galleryOpt = {
 				maximumImagesCount: 10,
+				sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
 				width: 100,
 				height: 100,
 				quality: 80
@@ -217,7 +218,7 @@ angular.module('salseManApp.controllers', [])
 			lastname: 'User1',
 			email: 'clientuser@offersApp.com',
 			image: 'https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAjhAAAAJDhlMGVhZjg5LTZmMjYtNDg1ZS05MDQxLWJiODEwY2E4NTgxYw.jpg'
-		},{
+		}, {
 			id: 1,
 			name: 'Client2',
 			lastname: 'User2',
@@ -231,15 +232,15 @@ angular.module('salseManApp.controllers', [])
 			image: 'https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAjhAAAAJDhlMGVhZjg5LTZmMjYtNDg1ZS05MDQxLWJiODEwY2E4NTgxYw.jpg'
 		}];
 
-		$scope.showFilterBar = function () {
-      filterBarInstance = $ionicFilterBar.show({
-        items: $scope.clients,
-        update: function (filteredItems) {
-          $scope.clients = filteredItems;
-        },
-        filterProperties: 'name'
-      });
-    };
+		$scope.showFilterBar = function() {
+			filterBarInstance = $ionicFilterBar.show({
+				items: $scope.clients,
+				update: function(filteredItems) {
+					$scope.clients = filteredItems;
+				},
+				filterProperties: 'name'
+			});
+		};
 
 		//function to add a client
 		$scope.addClient = function() {
@@ -298,7 +299,7 @@ angular.module('salseManApp.controllers', [])
 			email: 'clientuser@offersApp.com',
 			image: 'https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAjhAAAAJDhlMGVhZjg5LTZmMjYtNDg1ZS05MDQxLWJiODEwY2E4NTgxYw.jpg',
 			message: 'This is a "Facebook" styled Card. The header is created from a Thumbnail List item, the content is from a card-body consisting of an image and paragraph text. The footer consists of tabs, icons aligned left, within the card-footer.'
-		},{
+		}, {
 			to: 'Client2',
 			email: 'clientuser@offersApp.com',
 			image: 'https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAjhAAAAJDhlMGVhZjg5LTZmMjYtNDg1ZS05MDQxLWJiODEwY2E4NTgxYw.jpg',
@@ -326,7 +327,6 @@ angular.module('salseManApp.controllers', [])
 			$scope.modal.show();
 		};
 
-
 		$scope.expandText = function() {
 			var element = document.getElementById("messageArea");
 			element.style.height = element.scrollHeight + "px";
@@ -336,13 +336,36 @@ angular.module('salseManApp.controllers', [])
 			}
 		}
 
-		$scope.showFilterBar = function () {
-      filterBarInstance = $ionicFilterBar.show({
-        items: $scope.messages,
-        update: function (filteredItems) {
-          $scope.messages = filteredItems;
-        },
-        filterProperties: 'to'
-      });
-    };
+		$scope.showFilterBar = function() {
+			filterBarInstance = $ionicFilterBar.show({
+				items: $scope.messages,
+				update: function(filteredItems) {
+					$scope.messages = filteredItems;
+				},
+				filterProperties: 'to'
+			});
+		};
+
+
+		$ionicModal.fromTemplateUrl('templates/messagesDetails.html', {
+			scope: $scope
+		}).then(function(modal) {
+			$scope.messDetail = modal;
+		});
+
+
+		$scope.closeMessagesDetails = function() {
+			$scope.messDetail.hide();
+		};
+
+
+		$scope.openMessagesDetails = function() {
+			$scope.messDetail.show();
+		};
+
+
+
+
+
+
 	});

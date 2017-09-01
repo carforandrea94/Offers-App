@@ -1,20 +1,18 @@
 <ion-view view-title="Messages">
 	<ion-nav-buttons side="secondary">
-	<button class="buttons button-icon ion-android-search" ng-click="showFilterBar()"></button>
-</ion-nav-buttons>
-<ion-floating-button click="openNewMessage()" has-footer="false" button-color="#2AC9AA" icon="ion-plus" icon-color="#fff">
-</ion-floating-button>
+		<button class="buttons button-icon ion-android-search" ng-click="showFilterBar()"></button>
+	</ion-nav-buttons>
+	<ion-floating-button click="openNewMessage()" has-footer="false" button-color="#2AC9AA" icon="ion-plus" icon-color="#fff"></ion-floating-button>
 	<ion-content>
 		<div class="list">
 
+			<a class="item item-avatar item item-icon-right" ng-click="openMessagesDetails()" ng-repeat="message in messages">
+				<img src="{{message.image}}">
+				<i class="icon ion-ios-arrow-forward"></i>
+				<h2>{{message.to}}</h2>
+				<p>{{message.message}}</p>
+			</a>
 
-    <a class="item item-avatar item item-icon-right" href="#/app/messagesDetails" ng-repeat="message in messages">
-			<img src="{{message.image}}">
-			<i class="icon ion-ios-arrow-forward"></i>
-      <h2>{{message.to}}</h2>
-      <p>{{message.message}}</p>
-    </a>
-
-	</div>
+		</div>
 	</ion-content>
 </ion-view>
