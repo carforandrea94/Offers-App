@@ -1,0 +1,8 @@
+{
+  "db": {
+    "username": "User",
+    "password": "admin",
+    "name": "db",
+    "connector": "cloudant"
+  }
+}
