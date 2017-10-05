@@ -672,6 +672,1086 @@ paths:
         '204':
           description: Request was successful
       deprecated: false
+  /Salsemans:
+    post:
+      tags:
+        - Salseman
+      summary: Create a new instance of the model and persist it into the data source.
+      operationId: Salseman.create
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Salseman'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Salseman'
+      deprecated: false
+    patch:
+      tags:
+        - Salseman
+      summary: Patch an existing model instance or insert a new one into the data source.
+      operationId: Salseman.patchOrCreate
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Salseman'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Salseman'
+      deprecated: false
+    put:
+      tags:
+        - Salseman
+      summary: Replace an existing model instance or insert a new one into the data source.
+      operationId: Salseman.replaceOrCreate__put_Salsemans
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Salseman'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Salseman'
+      deprecated: false
+    get:
+      tags:
+        - Salseman
+      summary: Find all instances of the model matched by filter from the data source.
+      operationId: Salseman.find
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Salseman'
+      deprecated: false
+  /Salsemans/replaceOrCreate:
+    post:
+      tags:
+        - Salseman
+      summary: Replace an existing model instance or insert a new one into the data source.
+      operationId: Salseman.replaceOrCreate__post_Salsemans_replaceOrCreate
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Salseman'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Salseman'
+      deprecated: false
+  /Salsemans/upsertWithWhere:
+    post:
+      tags:
+        - Salseman
+      summary: Update an existing model instance or insert a new one into the data source based on the where criteria.
+      operationId: Salseman.upsertWithWhere
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/Salseman'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Salseman'
+      deprecated: false
+  '/Salsemans/{id}/exists':
+    get:
+      tags:
+        - Salseman
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'Salseman.exists__get_Salsemans_{id}_exists'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+  '/Salsemans/{id}':
+    head:
+      tags:
+        - Salseman
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'Salseman.exists__head_Salsemans_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+    get:
+      tags:
+        - Salseman
+      summary: 'Find a model instance by {{id}} from the data source.'
+      operationId: Salseman.findById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: filter
+          in: query
+          description: 'Filter defining fields and include - must be a JSON-encoded string ({"something":"value"})'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Salseman'
+      deprecated: false
+    put:
+      tags:
+        - Salseman
+      summary: Replace attributes for a model instance and persist it into the data source.
+      operationId: 'Salseman.replaceById__put_Salsemans_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Salseman'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Salseman'
+      deprecated: false
+    delete:
+      tags:
+        - Salseman
+      summary: 'Delete a model instance by {{id}} from the data source.'
+      operationId: Salseman.deleteById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+    patch:
+      tags:
+        - Salseman
+      summary: Patch attributes for a model instance and persist it into the data source.
+      operationId: Salseman.prototype.patchAttributes
+      parameters:
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/Salseman'
+        - name: id
+          in: path
+          description: Salseman id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Salseman'
+      deprecated: false
+  '/Salsemans/{id}/replace':
+    post:
+      tags:
+        - Salseman
+      summary: Replace attributes for a model instance and persist it into the data source.
+      operationId: 'Salseman.replaceById__post_Salsemans_{id}_replace'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Salseman'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Salseman'
+      deprecated: false
+  /Salsemans/findOne:
+    get:
+      tags:
+        - Salseman
+      summary: Find first instance of the model matched by filter from the data source.
+      operationId: Salseman.findOne
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Salseman'
+      deprecated: false
+  /Salsemans/update:
+    post:
+      tags:
+        - Salseman
+      summary: 'Update instances of the model matched by {{where}} from the data source.'
+      operationId: Salseman.updateAll
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/Salseman'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            description: Information related to the outcome of the operation
+            type: object
+            properties:
+              count:
+                description: The number of instances updated
+                type: number
+                format: double
+      deprecated: false
+  /Salsemans/count:
+    get:
+      tags:
+        - Salseman
+      summary: Count instances of the model matched by where from the data source.
+      operationId: Salseman.count
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              count:
+                type: number
+                format: double
+      deprecated: false
+  /Messages:
+    post:
+      tags:
+        - Message
+      summary: Create a new instance of the model and persist it into the data source.
+      operationId: Message.create
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Message'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Message'
+      deprecated: false
+    patch:
+      tags:
+        - Message
+      summary: Patch an existing model instance or insert a new one into the data source.
+      operationId: Message.patchOrCreate
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Message'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Message'
+      deprecated: false
+    put:
+      tags:
+        - Message
+      summary: Replace an existing model instance or insert a new one into the data source.
+      operationId: Message.replaceOrCreate__put_Messages
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Message'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Message'
+      deprecated: false
+    get:
+      tags:
+        - Message
+      summary: Find all instances of the model matched by filter from the data source.
+      operationId: Message.find
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Message'
+      deprecated: false
+  /Messages/replaceOrCreate:
+    post:
+      tags:
+        - Message
+      summary: Replace an existing model instance or insert a new one into the data source.
+      operationId: Message.replaceOrCreate__post_Messages_replaceOrCreate
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Message'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Message'
+      deprecated: false
+  /Messages/upsertWithWhere:
+    post:
+      tags:
+        - Message
+      summary: Update an existing model instance or insert a new one into the data source based on the where criteria.
+      operationId: Message.upsertWithWhere
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/Message'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Message'
+      deprecated: false
+  '/Messages/{id}/exists':
+    get:
+      tags:
+        - Message
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'Message.exists__get_Messages_{id}_exists'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+  '/Messages/{id}':
+    head:
+      tags:
+        - Message
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'Message.exists__head_Messages_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+    get:
+      tags:
+        - Message
+      summary: 'Find a model instance by {{id}} from the data source.'
+      operationId: Message.findById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: filter
+          in: query
+          description: 'Filter defining fields and include - must be a JSON-encoded string ({"something":"value"})'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Message'
+      deprecated: false
+    put:
+      tags:
+        - Message
+      summary: Replace attributes for a model instance and persist it into the data source.
+      operationId: 'Message.replaceById__put_Messages_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Message'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Message'
+      deprecated: false
+    delete:
+      tags:
+        - Message
+      summary: 'Delete a model instance by {{id}} from the data source.'
+      operationId: Message.deleteById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+    patch:
+      tags:
+        - Message
+      summary: Patch attributes for a model instance and persist it into the data source.
+      operationId: Message.prototype.patchAttributes
+      parameters:
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/Message'
+        - name: id
+          in: path
+          description: Message id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Message'
+      deprecated: false
+  '/Messages/{id}/replace':
+    post:
+      tags:
+        - Message
+      summary: Replace attributes for a model instance and persist it into the data source.
+      operationId: 'Message.replaceById__post_Messages_{id}_replace'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Message'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Message'
+      deprecated: false
+  /Messages/findOne:
+    get:
+      tags:
+        - Message
+      summary: Find first instance of the model matched by filter from the data source.
+      operationId: Message.findOne
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Message'
+      deprecated: false
+  /Messages/update:
+    post:
+      tags:
+        - Message
+      summary: 'Update instances of the model matched by {{where}} from the data source.'
+      operationId: Message.updateAll
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/Message'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            description: Information related to the outcome of the operation
+            type: object
+            properties:
+              count:
+                description: The number of instances updated
+                type: number
+                format: double
+      deprecated: false
+  /Messages/count:
+    get:
+      tags:
+        - Message
+      summary: Count instances of the model matched by where from the data source.
+      operationId: Message.count
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              count:
+                type: number
+                format: double
+      deprecated: false
+  /Favorites:
+    post:
+      tags:
+        - Favorite
+      summary: Create a new instance of the model and persist it into the data source.
+      operationId: Favorite.create
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Favorite'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Favorite'
+      deprecated: false
+    patch:
+      tags:
+        - Favorite
+      summary: Patch an existing model instance or insert a new one into the data source.
+      operationId: Favorite.patchOrCreate
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Favorite'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Favorite'
+      deprecated: false
+    put:
+      tags:
+        - Favorite
+      summary: Replace an existing model instance or insert a new one into the data source.
+      operationId: Favorite.replaceOrCreate__put_Favorites
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Favorite'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Favorite'
+      deprecated: false
+    get:
+      tags:
+        - Favorite
+      summary: Find all instances of the model matched by filter from the data source.
+      operationId: Favorite.find
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Favorite'
+      deprecated: false
+  /Favorites/replaceOrCreate:
+    post:
+      tags:
+        - Favorite
+      summary: Replace an existing model instance or insert a new one into the data source.
+      operationId: Favorite.replaceOrCreate__post_Favorites_replaceOrCreate
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Favorite'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Favorite'
+      deprecated: false
+  /Favorites/upsertWithWhere:
+    post:
+      tags:
+        - Favorite
+      summary: Update an existing model instance or insert a new one into the data source based on the where criteria.
+      operationId: Favorite.upsertWithWhere
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/Favorite'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Favorite'
+      deprecated: false
+  '/Favorites/{id}/exists':
+    get:
+      tags:
+        - Favorite
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'Favorite.exists__get_Favorites_{id}_exists'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+  '/Favorites/{id}':
+    head:
+      tags:
+        - Favorite
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'Favorite.exists__head_Favorites_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+    get:
+      tags:
+        - Favorite
+      summary: 'Find a model instance by {{id}} from the data source.'
+      operationId: Favorite.findById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: filter
+          in: query
+          description: 'Filter defining fields and include - must be a JSON-encoded string ({"something":"value"})'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Favorite'
+      deprecated: false
+    put:
+      tags:
+        - Favorite
+      summary: Replace attributes for a model instance and persist it into the data source.
+      operationId: 'Favorite.replaceById__put_Favorites_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Favorite'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Favorite'
+      deprecated: false
+    delete:
+      tags:
+        - Favorite
+      summary: 'Delete a model instance by {{id}} from the data source.'
+      operationId: Favorite.deleteById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+    patch:
+      tags:
+        - Favorite
+      summary: Patch attributes for a model instance and persist it into the data source.
+      operationId: Favorite.prototype.patchAttributes
+      parameters:
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/Favorite'
+        - name: id
+          in: path
+          description: Favorite id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Favorite'
+      deprecated: false
+  '/Favorites/{id}/replace':
+    post:
+      tags:
+        - Favorite
+      summary: Replace attributes for a model instance and persist it into the data source.
+      operationId: 'Favorite.replaceById__post_Favorites_{id}_replace'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/Favorite'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Favorite'
+      deprecated: false
+  /Favorites/findOne:
+    get:
+      tags:
+        - Favorite
+      summary: Find first instance of the model matched by filter from the data source.
+      operationId: Favorite.findOne
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit - must be a JSON-encoded string ({"something":"value"})'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Favorite'
+      deprecated: false
+  /Favorites/update:
+    post:
+      tags:
+        - Favorite
+      summary: 'Update instances of the model matched by {{where}} from the data source.'
+      operationId: Favorite.updateAll
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/Favorite'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            description: Information related to the outcome of the operation
+            type: object
+            properties:
+              count:
+                description: The number of instances updated
+                type: number
+                format: double
+      deprecated: false
+  /Favorites/count:
+    get:
+      tags:
+        - Favorite
+      summary: Count instances of the model matched by where from the data source.
+      operationId: Favorite.count
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              count:
+                type: number
+                format: double
+      deprecated: false
 definitions:
   x-any:
     properties: {}
@@ -693,7 +1773,8 @@ definitions:
         type: string
         format: date-time
       userId:
-        type: string
+        type: number
+        format: double
     required:
       - id
     additionalProperties: false
@@ -708,9 +1789,58 @@ definitions:
       emailVerified:
         type: boolean
       id:
-        type: string
+        type: number
+        format: double
     required:
       - email
+    additionalProperties: false
+  Salseman:
+    properties:
+      Company:
+        type: string
+      Email:
+        type: string
+      Firstname:
+        type: string
+      Image:
+        type: string
+      Lastname:
+        type: string
+      Password:
+        type: string
+      PhoneNumber:
+        type: number
+        format: double
+      Username:
+        type: string
+    required:
+      - Company
+      - Email
+      - Firstname
+      - Lastname
+      - Password
+      - PhoneNumber
+      - Username
+    additionalProperties: false
+  Message:
+    properties:
+      Object:
+        type: string
+      Body:
+        type: number
+        format: double
+      id:
+        type: number
+        format: double
+    required:
+      - Object
+      - Body
+    additionalProperties: false
+  Favorite:
+    properties:
+      id:
+        type: number
+        format: double
     additionalProperties: false
 basePath: /api
 swagger: '2.0'

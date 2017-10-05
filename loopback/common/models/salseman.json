@@ -1,0 +1,47 @@
+{
+  "name": "Salseman",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "Company": {
+      "type": "string",
+      "required": true
+    },
+    "Email": {
+      "type": "string",
+      "required": true
+    },
+    "Firstname": {
+      "type": "string",
+      "required": true
+    },
+    "Image": {
+      "type": "string",
+      "required": false
+    },
+    "Lastname": {
+      "type": "string",
+      "required": true
+    },
+    "Password": {
+      "type": "string",
+      "required": true
+    },
+    "PhoneNumber": {
+      "type": "number",
+      "required": true
+    },
+    "Username": {
+      "type": "string",
+      "id": true,
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
