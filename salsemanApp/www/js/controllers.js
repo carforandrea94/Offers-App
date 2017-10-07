@@ -10,7 +10,7 @@ angular.module('salseManApp.controllers', [])
 		//});
 
 		// Form data for the login modal
-		$scope.loginData = $localStorage.getObject('userinfo', '{}');
+		$scope.loginData = {};
 		$scope.registrationData = {};
 
 		// Create the login modal that we will use later
@@ -85,30 +85,38 @@ angular.module('salseManApp.controllers', [])
 					$scope.registration.imgSrc = "data:image/jpeg;base64," + imageData;
 				}, function(err) {
 					console.log(err);
+					$scope.registerform.show();
 				});
 				$scope.registerform.show();
 			};
+		}); //end ionicPlatform of tacke picture
 
-			var pickoptions = {
-				maximumImagesCount: 1,
-				width: 100,
-				height: 100,
-				quality: 50
+		$ionicPlatform.ready(function() {
+
+			var galleryOpt = {
+				quality: 50,
+				targetWidth: 100,
+				targetHeight: 100,
+				saveToPhotoAlbum: false
 			};
 
 			$scope.picGallery = function() {
-				$cordovaImagePicker.getPictures(pickoptions)
+				$cordovaImagePicker.getPictures(galleryOpt)
 					.then(function(results) {
 						for (var i = 0; i < results.length; i++) {
 							console.log('Image URI: ' + results[i]);
 							$scope.registration.imgSrc = results[0];
 						}
 					}, function(error) {
+						console.log(error);
+						$scope.registerform.show();
 						// error getting photos
 					});
-			};
 
-		});
+				$scope.registerform.show();
+			};
+		}); //end ionicPlatform of gallery
+
 
 	}) //end controller
 
@@ -230,8 +238,6 @@ angular.module('salseManApp.controllers', [])
 		$scope.addClient = function() {
 			//put the function here
 		}
-
-
 	})
 
 
