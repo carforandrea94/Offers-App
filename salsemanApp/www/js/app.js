@@ -94,7 +94,7 @@ angular.module('salseManApp', ['ionic', 'jett.ionic.filter.bar', 'ion-floating-m
 				views: {
 					'mainContent': {
 						templateUrl: 'templates/clientDetails.html',
-						controller: 'ClientDetailsCtrl'
+						controller: 'ClientDetailsCtrl',
 					}
 				}
 

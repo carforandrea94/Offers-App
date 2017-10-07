@@ -1,14 +1,21 @@
 <ion-view view-title="Clients Details">
 	<ion-content>
 		<div class="card">
-          <div class="item item-body item-text-wrap">
-               <img class="full-image" ng-src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAjhAAAAJDhlMGVhZjg5LTZmMjYtNDg1ZS05MDQxLWJiODEwY2E4NTgxYw.jpg">
-                <h1>Client 1</h1>
-                 <div>
-									 <h2><i class="icon ion-ios-telephone"></i> 333 326245</h2>
-										 <h2><i class="icon ion-email"></i> enzo.martino.94@gmail.com</h2>
-									 <div>
-          </div>
-      </div>
+			<div class="item item-body item-text-wrap">
+				<img class="full-image" ng-src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAjhAAAAJDhlMGVhZjg5LTZmMjYtNDg1ZS05MDQxLWJiODEwY2E4NTgxYw.jpg">
+				<h1>Client 1</h1>
+
+				<ion-list>
+					<ion-item href="tel:333 326345" class="item item-icon-let">
+						<i class="icon ion-telephone"></i>
+						333 326345
+					</ion-item>
+					<ion-item href="mailto:enzo.martino@gmail.com" class="item item-icon-left">
+						<i class="icon ion-email"></i>
+						enzo.martino@gmail.com
+					</ion-item>
+				</ion-list>
+			</div>
+		</div>
 	</ion-content>
 </ion-view>
