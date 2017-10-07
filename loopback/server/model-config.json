@@ -34,5 +34,17 @@
   "Role": {
     "dataSource": "db",
     "public": false
+  },
+  "Salseman": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Message": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Favorite": {
+    "dataSource": "db",
+    "public": true
   }
 }

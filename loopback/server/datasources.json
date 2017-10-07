@@ -1,8 +1,8 @@
 {
   "db": {
-    "username": "User",
-    "password": "admin",
+    "username": "",
+    "password": "",
     "name": "db",
-    "connector": "cloudant"
+    "connector": "memory"
   }
 }
