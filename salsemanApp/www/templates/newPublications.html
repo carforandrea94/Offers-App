@@ -11,32 +11,40 @@
 				<span class="input-label">Publication's title</span>
 				<input type="text">
 			</label>
-			<div class="row responsive-sm">
-				<div class="col col-100">
-					<label class="item item-input item-stacked-label">
-						<span class="input-label">Description</span>
-						<textarea id="descriptionArea" placeholder="Write the description here" ng-keyup="expandText()" ng-keydown="expandText()"></textarea>
-					</label>
+
+			<label class="item item-thumbnail">
+				<span class="input-label">Image of Publication</span>
+				<img src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAjhAAAAJDhlMGVhZjg5LTZmMjYtNDg1ZS05MDQxLWJiODEwY2E4NTgxYw.jpg">
+				<div class="buttons">
+					<button class="button button-block button-outline button-positive" ng-click="picGalleryfoPublication()" end>Change Image</button>
+				</div>
+			</label>
+
+			<div class="card">
+				<div class="item">
+					Description:
+				</div>
+
+				<div class="item">
+					<textarea id="descriptionArea" placeholder="Write the description here" ng-keyup="expandText()" ng-keydown="expandText()"></textarea>
 				</div>
 			</div>
-			<div class="row ">
-			<div class="col col-40">
-				<ion-checkbox>Special</ion-checkbox>
-			</div>
-			</div>
-			<div class="row ">
-			<div class="col col-40">
-			<button class="button  button-small button-dark button-outline icon icon-left ion-camera" ng-click="">Select Image</button>
-			</div>
-			</div>
-			<div class="row">
-				<div class="col col-offset-50">
-					<button class="button button-dark" ng-click="clearMessage()">Clear</button>
-				</div>
-				<div class="col">
-					<button class="button button-positive">Send</button>
-				</div>
-			</div>
+
+			<label class="item item-toggle">
+				Special
+				<label class="toggle">
+					<input type="checkbox" ng-click="changeState()"/>
+					<div class="track">
+						<div class="handle"></div>
+					</div>
+				</label>
+			</label>
+
 		</div>
 	</ion-content>
+	<ion-footer-bar class="bar-positive">
+		<button class="button button-clear icon ion-close-round pull-left" ng-click="clearMessage()">Clear</button>
+
+		<button class="button button-clear icon icon-right  ion-checkmark-round pull-right">Sand</button>
+	</ion-footer-bar>
 </ion-modal-view>

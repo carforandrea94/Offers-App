@@ -120,7 +120,9 @@ angular.module('salseManApp.controllers', [])
 
 	}) //end controller
 
-	.controller('PublicationsCtrl', function($scope, $ionicModal) {
+	.controller('PublicationsCtrl', function($scope, $ionicModal, $ionicPlatform, $cordovaImagePicker) {
+		var state = false;
+
 		$ionicModal.fromTemplateUrl('templates/newPublications.html', {
 			scope: $scope
 		}).then(function(modal) {
@@ -136,6 +138,38 @@ angular.module('salseManApp.controllers', [])
 		$scope.openNewPublication = function() {
 			$scope.modal.show();
 		};
+
+		$scope.changeState = function() {
+			state = !state;
+		};
+
+
+		$ionicPlatform.ready(function() {
+
+			var galleryOpt = {
+				quality: 50,
+				targetWidth: 100,
+				targetHeight: 100,
+				saveToPhotoAlbum: false
+			};
+
+			$scope.picGalleryfoPublication = function() {
+				$cordovaImagePicker.getPictures(galleryOpt)
+					.then(function(results) {
+						for (var i = 0; i < results.length; i++) {
+							console.log('Image URI: ' + results[i]);
+							$scope.registration.imgSrc = results[0];
+						}
+					}, function(error) {
+						console.log(error);
+						$scope.modal.show();
+						// error getting photos
+					});
+
+				$scope.modal.show();
+			};
+		}); //end ionicPlatform of gallery
+
 
 
 		$scope.expandText = function() {
@@ -206,19 +240,19 @@ angular.module('salseManApp.controllers', [])
 	.controller('ClientsCtrl', function($scope, $ionicFilterBar, $ionicActionSheet) {
 		$scope.clients = [{
 			id: 0,
-			name: 'Client1',
+			firstname: 'Client1',
 			lastname: 'User1',
 			email: 'clientuser@offersApp.com',
 			image: 'https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAjhAAAAJDhlMGVhZjg5LTZmMjYtNDg1ZS05MDQxLWJiODEwY2E4NTgxYw.jpg'
 		}, {
 			id: 1,
-			name: 'Client2',
+			firstname: 'Client2',
 			lastname: 'User2',
 			email: 'clientuser@offersApp.com',
 			image: 'https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAjhAAAAJDhlMGVhZjg5LTZmMjYtNDg1ZS05MDQxLWJiODEwY2E4NTgxYw.jpg'
 		}, {
 			id: 2,
-			name: 'Client3',
+			firstname: 'Client3',
 			lastname: 'User3',
 			email: 'clientuser@offersApp.com',
 			image: 'https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAjhAAAAJDhlMGVhZjg5LTZmMjYtNDg1ZS05MDQxLWJiODEwY2E4NTgxYw.jpg'

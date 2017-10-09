@@ -6,8 +6,6 @@
     </button>
   </ion-nav-buttons >
 
-  <!--<i class="icon ion-android-share-alt"></i>-->
-
   <ion-content>
 
     <form ng-If="getState()">
@@ -51,17 +49,6 @@
         </label>
 
       </div>
-      <div class="grid">
-        <div class="row">
-          <div class="col col-50">
-            <button class="button button-dark button-block button-right ">Cancel</button>
-          </div>
-          <div class="col col-50">
-            <button class="button button-positive button-block button-right " ng-click="saveChanges()">Save Changes</button>
-          </div>
-        </div>
-      </div>
-
     </form>
 
     <div class="list" ng-If="!getState()">
@@ -105,4 +92,10 @@
     </div>
 
   </ion-content>
+  <ion-footer-bar class="bar-positive" ng-If="getState()">
+    <button class="button button-clear icon ion-close-round pull-left" ng-click="clearMessage()">Clear</button>
+
+    <button class="button button-clear icon icon-right ion-checkmark-round pull-right" ng-click="saveChanges()">Save Changes</button>
+  </ion-footer-bar>
+
 </ion-view>
