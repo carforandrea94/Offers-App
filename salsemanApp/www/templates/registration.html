@@ -1,58 +1,75 @@
 <ion-modal-view>
 	<ion-header-bar>
+
 		<h1 class="title">Registration User</h1>
 		<div class="buttons">
 			<button class="button button-clear button-dark" ng-click="closeRegister()">Close</button>
 		</div>
 	</ion-header-bar>
-	<form ng-submit="doRegister()">
 		<ion-content>
+	<form ng-submit="doRegister()">
+
 			<div class="list">
-				<label class="item item-input">
-					<span class="input-label">First Name</span>
-					<input type="text" ng-model="registration.firstname">
-				</label>
-				<label class="item item-input">
-					<span class="input-label">Last Name</span>
-					<input type="text" ng-model="registration.lastname">
-				</label>
-				<label class="item item-input">
-					<span class="input-label">Username</span>
-					<input type="text" ng-model="registration.username">
-				</label>
-				<label class="item item-input">
-					<span class="input-label">Telephone Number</span>
-					<input type="tel" ng-model="registration.telnum">
-				</label>
-				<label class="item item-input">
-					<span class="input-label">Email</span>
-					<input type="email" ng-model="registration.email">
-				</label>
-				<label class="item item-input">
-					<span class="input-label">Password</span>
-					<input type="password" ng-model="registration.passwor">
+        <label class = "item item-input item-stacked-label">
+          <span class = "input-label">Name</span>
+          <input type = "text" placeholder = "My name"  id="name" ng-model="registrationData.Name" readonly=true/>
+        </label>
+
+        <label class = "item item-input item-stacked-label">
+          <span class = "input-label">Surname</span>
+          <input type = "text" placeholder = "My Surname"  id="surname" ng-model="registrationData.Surname" readonly=true/>
+        </label>
+
+        <label class = "item item-input item-stacked-label">
+          <span class = "input-label">Username</span>
+          <input type = "text" placeholder = "My Username"  id="username" ng-model="registrationData.Username" readonly=true/>
+        </label>
+
+      <label class = "item item-input item-stacked-label">
+          <span class = "input-label">Company</span>
+          <input type = "text" placeholder = "My company"  id="company" ng-model="registrationData.company" readonly=true/>
+      </label>
+
+
+
+        <label class = "item item-input item-stacked-label">
+          <span class = "input-label">Phone Numb.</span>
+          <input type = "text" placeholder = ""  id="phoneNumber" ng-model="registrationData.phoneNumber" readonly=true/>
+        </label>
+
+
+        <label class = "item item-input item-stacked-label">
+          <span class = "input-label">Email</span>
+          <input type = "email" placeholder = "-@-."  id="email" ng-model="registrationData.email" readonly=true/>
+        </label>
+
+
+        <label class = "item item-input item-stacked-label">
+          <span class = "input-label">Password</span>
+          <input type = "password" placeholder = ""  id="password" ng-model="registrationData.passwod" readonly=true/>
+        </label>
+
+			 <label class = "item item-input item-stacked-label">
+					<span class="input-label">Your Picture</span>
+					<img class="padding" ng-src="{{registrationData.imgSrc}}">
 				</label>
 
-				<label class="item item-input">
-					<span class="input-label">Your Picture</span>
+				<label class="item item-thumbnail">
+						<button class="button  button-block button-dark button-outline icon icon-left ion-camera" ng-click="takePictureReg()">Take Picture</button>
 				</label>
-				<label class="item item-input">
-					<img class="padding" *ng-if="{{registration.imgSrc==null}}" ng-src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAjhAAAAJDhlMGVhZjg5LTZmMjYtNDg1ZS05MDQxLWJiODEwY2E4NTgxYw.jpg">
-					<img class="padding" *ng-if="{{registration.imgSrc!=null}}" ng-src="{{registration.imgSrc}}">
-				</label>
-				<label class="item">
-					<button class="button  button-block button-dark button-outline icon icon-left ion-camera" ng-click="takePicture()">Take Picture</button>
-				</label>
-				<label class="item">
-					<button class="button button-block  button-positive button-outline icon icon-left ion-image " ng-click="picGallery()">Gallery</button>
+				<label class="item item-thumbnail">
+						<button class="button button-block  button-positive button-outline icon icon-left ion-image " ng-click="picGalleryReg()">Gallery</button>
 				</label>
 
 			</div>
+				</form>
 		</ion-content>
+
+
 		<ion-footer-bar class="bar-positive">
 			<button class="button button-clear icon icon-right ion-forward pull-right" type="submit" end>
 				<strong>Register</strong>
 			</button>
 		</ion-footer-bar>
-	</form>
+
 </ion-modal-view>

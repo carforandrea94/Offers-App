@@ -1,42 +1,37 @@
 <ion-view view-title="Publications">
+
   <ion-nav-buttons side="secondary">
     <button class="button button-clear" ng-click="openNewPublication()">
       <i class="icon ion-plus-circled"></i>
     </button>
   </ion-nav-buttons>
-  <div class="tabs tabs-icon-top">
-    <ul class="tabs">
-      <li ng-class="{active: active:isSelected(1)}" class="tab-item" ng-click="select(1)">
-        <i class="icon ion-ios-filing"></i>
-        All
-      </li>
-      <li ng-class="{active:isSelected(2)}" class="tab-item" ng-click="select(2)" side="right">
-        <i class="icon ion-android-clipboard"></i>
-        Normals
-      </li>
-      <li ng-class="{active:isSelected(3)}" class="tab-item" ng-click="select(3)" side="right">
-        <i class="icon ion-ios-star"></i>
-        Specials
-      </li>
-    </ul>
-  </div>
+
   <ion-content>
-    <ion-list>
-      <a href="#/app/publicationDetails" style="text-decoration : none">
-      <div class="list card" ng-repeat="publication in publications | filter:{type: filtText}" >
-        <div class="item item-avatar">
-          <img src="{{salesman.image}}" alt="Image">
-          <h2>{{publication.title}}</h2>
-          <p>November 05, 1955</p>
-        </div>
-        <div class="item item-body">
-          <img class="full-image" src="{{publication.image}}" alt="Publication image">
-          <p>
-            This is a "Facebook" styled Card. The header is created from a Thumbnail List item, the content is from a card-body consisting of an image and paragraph text. The footer consists of tabs, icons aligned left, within the card-footer.
-          </p>
-        </div>
-      </div>
-    </a>
-    </ion-list>
+      <div class = "list" ng-repeat="publication in publications | filter:{type: filtText}"  >
+              <div class = "item item-body" >
+                    <h2>Title: {{publication.title}}</h2>
+                      <img class="full-image" src="{{publication.imgSrc}}" alt="Publication image">
+                      <p>Description:</p>
+                      <p>{{publication.description}}</p>
+                </div>
+                <div class = "item item-icon-left" ng-click="openPublicationDetails()">
+                    <i class = "icon ion-information"></i>
+                    <span class = "text-note">more info</span>
+                  </div>
+          </div>
   </ion-content>
+
+  		<ion-footer-bar>
+            <a ng-class="{active: isSelected(1}" class="tab-item " ng-click="select(1)">
+              <i class="icon ion-ios-filing"></i>
+            </a>
+
+            <a ng-class="{active:isSelected(2)}"  class="tab-item " ng-click="select(2)" >
+              <i class = "icon ion-android-clipboard"></i>
+            </a>
+
+            <a ng-class="{active:isSelected(3)}" class="tab-item" ng-click="select(3)">
+              <i class = " icon ion-ios-star"></i>
+            </a>
+  		</ion-footer-bar>
 </ion-view>

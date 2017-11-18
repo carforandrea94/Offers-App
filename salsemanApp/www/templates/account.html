@@ -7,95 +7,62 @@
   </ion-nav-buttons >
 
   <ion-content>
-
-    <form ng-If="getState()">
-
+    <form >
       <div class="list">
         <label class="item item-thumbnail">
-          <img src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAjhAAAAJDhlMGVhZjg5LTZmMjYtNDg1ZS05MDQxLWJiODEwY2E4NTgxYw.jpg">
-          <div class="buttons">
+          <img ng-src="{{loginData.imgSrc}}">
+          <div class="buttons" ng-If="getState()">
             <button class="button button-block button-outline button-positive" ng-click="picGallery()" end>Change Image</button>
           </div>
         </label>
 
-        <label class="item item-input">
-          <span class="input-label">First Name</span>
-          <input type="text" ng-model="salsman.firstname">
+
+        <label class = "item item-input item-stacked-label">
+          <span class = "input-label">Name</span>
+          <input type = "text" placeholder = "My name"  id="name" ng-model="loginData.Name" readonly=true/>
         </label>
 
-        <label class="item item-input">
-          <span class="input-label">Last Name</span>
-          <input type="text" ng-model="salseman.lastname">
+        <label class = "item item-input item-stacked-label">
+          <span class = "input-label">Surname</span>
+          <input type = "text" placeholder = "My Surname"  id="surname" ng-model="loginData.surname" readonly=true/>
         </label>
 
-        <label class="item item-input">
-          <span class="input-label">Username</span>
-          <input type="text" ng-model="salseman.username">
+        <label class = "item item-input item-stacked-label">
+          <span class = "input-label">Username</span>
+          <input type = "text" placeholder = "My Username"  id="username" ng-model="loginData.username" readonly=true/>
         </label>
 
-        <label class="item item-input">
-          <span class="input-label">Telephone Number</span>
-          <input type="tel" ng-model="salseman.telnum">
+      <label class = "item item-input item-stacked-label">
+          <span class = "input-label">Company</span>
+          <input type = "text" placeholder = "My company"  id="company" ng-model="loginData.company" readonly=true/>
+      </label>
+
+        <label class = "item item-input item-stacked-label">
+          <span class = "input-label">Phone Numb.</span>
+          <input type = "text" placeholder = ""  id="phoneNumber" ng-model="loginData.phoneNumber" readonly=true/>
         </label>
 
-        <label class="item item-input">
-          <span class="input-label">Email</span>
-          <input type="email" ng-model="salseman.email">
+
+        <label class = "item item-input item-stacked-label">
+          <span class = "input-label">Email</span>
+          <input type = "email" placeholder = "-@-."  id="email" ng-model="loginData.email" readonly=true/>
         </label>
 
-        <label class="item item-input">
-          <span class="input-label">Password</span>
-          <input type="password" ng-model="salseman.password">
+
+        <label class = "item item-input item-stacked-label">
+          <span class = "input-label">Password</span>
+          <input type = "password" placeholder = ""  id="password" ng-model="loginData.passwod" readonly=true/>
         </label>
+
 
       </div>
-    </form>
 
-    <div class="list" ng-If="!getState()">
-      <label class="item item-thumbnail">
-        <img src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAjhAAAAJDhlMGVhZjg5LTZmMjYtNDg1ZS05MDQxLWJiODEwY2E4NTgxYw.jpg">
-      </label>
+      <div class="buttons" ng-If="!getState()">
+        <button class="button button-block button-full button-assertive" ng-click="logout()" end>Log out</button>
+      </div>
+      <div class="buttons" ng-If="getState()">
+        <button class="button button-block button-full button-balanced icon icon-right ion-checkmark-round " end ng-If="getState()" ng-click="saveChanges()">Save Changes</button>
+      </div>
+    </ion-content>
 
-      <label class="item item-input">
-        <span class="input-label">First Name</span>
-        SalsMan
-      </label>
-
-      <label class="item item-input">
-        <span class="input-label">Last Name</span>
-        User
-      </label>
-
-      <label class="item item-input">
-        <span class="input-label">Username</span>
-        salsemanUser1
-        <button class="button button-small button-clear button-positive">
-          <i class="icon ion-android-share-alt"></i>
-
-        </button>
-      </label>
-
-      <label class="item item-input">
-        <span class="input-label">Telephone Number</span>
-        324-3454231234
-      </label>
-
-      <label class="item item-input">
-        <span class="input-label">Email</span>
-        salsemanUser1@offers.com
-      </label>
-
-      <label class="item item-input">
-        <span class="input-label">Password</span>
-        admin
-      </label>
-    </div>
-
-  </ion-content>
-  <ion-footer-bar class="bar-positive" ng-If="getState()">
-    <button class="button button-clear icon ion-close-round pull-left" ng-click="clearMessage()">Clear</button>
-
-    <button class="button button-clear icon icon-right ion-checkmark-round pull-right" ng-click="saveChanges()">Save Changes</button>
-  </ion-footer-bar>
-
-</ion-view>
+  </ion-view>

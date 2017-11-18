@@ -26,6 +26,17 @@ angular.module('salseManApp', ['ionic', 'jett.ionic.filter.bar', 'ion-floating-m
 				controller: 'AppCtrl'
 			})
 
+			.state('app.start', {
+				url: '/start',
+				views: {
+					'mainContent': {
+						templateUrl: 'templates/start.html',
+						controller: 'AppCtrl'
+					}
+				}
+			})
+
+
 			.state('app.account', {
 				url: '/account',
 				views: {
@@ -98,7 +109,9 @@ angular.module('salseManApp', ['ionic', 'jett.ionic.filter.bar', 'ion-floating-m
 					}
 				}
 
+
+
 			});
 		// if none of the above states are matched, use this as the fallback
-		$urlRouterProvider.otherwise('/app/clients');
+		$urlRouterProvider.otherwise('/app/start');
 	});
