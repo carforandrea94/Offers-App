@@ -5,16 +5,14 @@
 	<ion-floating-button click="addClient()" has-footer="false" button-color="#2AC9AA" icon="ion-plus" icon-color="#fff"></ion-floating-button>
 
 	<ion-content>
-		<ion-list>
-			<div class="list">
 
-				<a class="item item-avatar" href="#/app/clientDetails" ng-repeat="client in clients">
-					<img src="{{client.image}}" alt="Image">
-					<h2>{{client.firstname}}
-						{{client.lastname}}</h2>
-					<p>{{client.email}}</p>
-				</a>
+			<div class="list" >
 
-				<div></ion-list>
+				<div class="item item-avatar"  ng-repeat="client in clients" ng-click="openClientDetails({{client.id}})">
+					<img src="{{client.imgSrc}}" alt="Image">
+					<h2>{{client.name}} {{client.surname}}</h2>
+				</div>
+
+			</div>
 			</ion-content>
 		</ion-view>

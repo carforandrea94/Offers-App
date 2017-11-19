@@ -1,20 +1,26 @@
-<ion-modal-view view-title="Publication Details">
+<ion-modal-view >
+  <ion-header-bar>
+		<h1 class="title">Publication details</h1>
+		<div class="buttons">
+			<button class="button button-clear button-dark" ng-click="closePublicationDetails()">Close</button>
+		</div>
+	</ion-header-bar>
   <ion-content>
-      <h1 align="center">Title: {{publication.title}}</h1>
-          <div class="item item-body item-text-wrap">
-               <img class="full-image" ng-src="{{publication.imgSrc}}">
-                <h1>Description</h1>
-                 <div class="row">
-                   <h2>{{publication.description}}</h2>
-									 </div>
-                   <div class="row">
-                     <h2>Type : {{publication.type}}</h2>
-                   </div>
-                   <br>
-                   <div class="row">
-                     <button class="button button-block button-assertive">
-                        Delete publication
-                      </button>
-                    </div>
+
+      <div class="list" no-border>
+        <div class = "item item-thumbnail">
+        <img  ng-src="{{publication.imgSrc}}" alt="Publication image">
+          <h2>Title:  {{publication.title}}</h2>
+          <h2>Description:</h2>
+          <h3>{{publication.description}}</h3>
+          <h2>Type:</h2>
+          <h3>{{publication.type}}</h3>
+        </div>
+      </div>
+
+                   <buttom class = "bar bar-footer bar-assertive">
+           						<h1 class = "title">
+           						<i class="icon ion-android-delete"></i> Delete Publication</h1>
+           				</buttom>
   </ion-content>
 </ion-modal-view>

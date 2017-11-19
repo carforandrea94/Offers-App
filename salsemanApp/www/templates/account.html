@@ -7,12 +7,16 @@
   </ion-nav-buttons >
 
   <ion-content>
-    <form >
+    <form>
       <div class="list">
-        <label class="item item-thumbnail">
-          <img ng-src="{{loginData.imgSrc}}">
-          <div class="buttons" ng-If="getState()">
-            <button class="button button-block button-outline button-positive" ng-click="picGallery()" end>Change Image</button>
+
+         <label class="item item-thumbnail">
+                <img ng-src="{{loginData.imgSrc}}">
+          </label>
+
+        <label class="item item-thumbnail" ng-If="getState()">
+          <div class="buttons" >
+            <button class="button button-block button-outline button-positive" ng-click="changeImage()" end>Change Image</button>
           </div>
         </label>
 

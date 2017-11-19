@@ -7,16 +7,13 @@
 	</ion-header-bar>
 	<ion-content>
 		<div class="list">
-
-
 			<label class = "item item-input item-stacked-label">
 				<span class = "input-label"> Title</span>
-				<input type = "text" placeholder = "Publication title"  id="titel" ng-model="publication.title" readonly=true/>
+				<input type = "text" placeholder = "Publication title"  id="titel" ng-model="newPublication.title"/>
 			</label>
 
 			<label class="item item-thumbnail">
-				<span class="input-label">Image of Publication</span>
-			  <img ng-src="{{publication.imgSrc}}">
+			  <img ng-src="{{newPublication.imgSrc}}" alt="publication image">
 			</label>
 
 			<label class="item item-thumbnail">
@@ -29,7 +26,7 @@
 
 			<label class = "item item-input item-stacked-label">
 				<span class = "input-label">Description</span>
-				<textarea id="descriptionArea" placeholder="Write the description here" ng-keyup="expandText()" ng-keydown="expandText()" ng-model="publication.description" id="description"></textarea>
+				<textarea id="descriptionArea" placeholder="Write the description here" ng-keyup="expandText()" ng-keydown="expandText()" ng-model="newPublication.description" id="description"></textarea>
 			</label>
 
 			<label class="item item-toggle item-stacked-label">
@@ -43,10 +40,18 @@
 			</label>
 
 		</div>
-	</ion-content>
-	<ion-footer-bar >
-		<button class="button button-dark button-clear icon ion-close-round pull-left" ng-click="clearMessage()">Clear</button>
 
-		<button class="button button-dark button-clear icon icon-right  ion-checkmark-round pull-right" ng-click="addNewPublication()">Add</button>
+
+	</ion-content>
+
+	<ion-footer-bar class="bar-positive">
+		<button class="button button-clear icon ion-close-round pull-left" ng-click="clearAll()" >
+			<strong>Clear</strong>
+		</button>
+		<button class="button button-clear icon icon-right  ion-checkmark-round pull-right icon ion-checkmark-round" ng-click="addNewPublication()" end>
+			<strong>Add</strong>
+		</button>
 	</ion-footer-bar>
+
+
 </ion-modal-view>

@@ -23,7 +23,7 @@ angular.module('salseManApp', ['ionic', 'jett.ionic.filter.bar', 'ion-floating-m
 				url: '/app',
 				abstract: true,
 				templateUrl: 'templates/sidemenu.html',
-				controller: 'AppCtrl'
+				controller: 'IndexCtrl'
 			})
 
 			.state('app.start', {

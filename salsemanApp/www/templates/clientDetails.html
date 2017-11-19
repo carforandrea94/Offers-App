@@ -1,18 +1,30 @@
-<ion-view view-title="Clients Details"  hide-back-button="true">
+<ion-modal-view >
+
+	<ion-header-bar>
+		<h1 class="title">Clients details</h1>
+		<div class="buttons">
+			<button class="button button-clear button-dark" ng-click="closeClientDetails()">Close</button>
+		</div>
+	</ion-header-bar>
 
 	<ion-content>
-		<div class="card">
-			<div class="item item-body item-text-wrap">
-				<img class="full-image" ng-src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAjhAAAAJDhlMGVhZjg5LTZmMjYtNDg1ZS05MDQxLWJiODEwY2E4NTgxYw.jpg">
-				<h1>Client 1</h1>
-				<div>
-					<h2>
-						<i class="icon ion-ios-telephone"></i>
-						333 326245</h2>
-					<h2>
-						<i class="icon ion-email"></i>
-						enzo.martino.94@gmail.com</h2>
-					<div></div>
+
+				<img class="full-image" ng-src="client.imgSrc" alt="image">
+				<p><strong>Name : </strong><h3>{{client.name}}</h3></p>
+				<p><strong>Surname: </strong> <h3> {{client.surname}}</h3></p>
+				<p> <strong>Email: </strong> <h3> {{client.email}}</h3></p>
+
+
+					<button class = "button button-calm button-clear button-full icon ion-android-send icon-right">
+   					Sand Message to {{client.name}} {{client.surname}}
+					</button>
+
+				<div class = "bar bar-footer bar-assertive">
+						<h1 class = "title">
+						<i class="icon ion-android-delete"></i> Delete Client</h1>
 				</div>
+
+
 			</ion-content>
-		</ion-view>
+
+		</ion-modal-view>

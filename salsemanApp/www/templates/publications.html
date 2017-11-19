@@ -2,7 +2,7 @@
 
   <ion-nav-buttons side="secondary">
     <button class="button button-clear" ng-click="openNewPublication()">
-      <i class="icon ion-plus-circled"></i>
+      <i class="icon ion-plus-round"></i>
     </button>
   </ion-nav-buttons>
 
@@ -14,7 +14,7 @@
                       <p>Description:</p>
                       <p>{{publication.description}}</p>
                 </div>
-                <div class = "item item-icon-left" ng-click="openPublicationDetails()">
+                <div class = "item item-icon-left" ng-click="openPublicationDetails({{publication.id}})">
                     <i class = "icon ion-information"></i>
                     <span class = "text-note">more info</span>
                   </div>

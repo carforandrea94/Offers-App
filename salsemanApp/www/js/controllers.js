@@ -9,8 +9,6 @@ angular.module('salseManApp.controllers', [])
 		//$scope.$on('$ionicView.enter', function(e) {
 		//});
 		// Form data for the login modal
-		$scope.loginData = $localStorage.getObject('userinfo', '{}');
-		$scope.registrationData = {};
 
 
 		var customTemplateLogin = '<div class="bar bar-header ">Login</div>' +
@@ -160,88 +158,131 @@ angular.module('salseManApp.controllers', [])
 									});
 							};
 		    });
-
-
-
-
 	}) //end Appcontroller
+
+
+		.controller('IndexCtrl', function($scope, $stateParams,$localStorage) {
+			$scope.loginData = $localStorage.getObject('userinfo', '{}');
+			$scope.registrationData = {};
+			$scope.clients = [{
+				id: 0,
+				name: 'Client1',
+				surname: 'User1',
+				email: 'clientuser@offersApp.com',
+				imgSrc: 'https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAjhAAAAJDhlMGVhZjg5LTZmMjYtNDg1ZS05MDQxLWJiODEwY2E4NTgxYw.jpg'
+			}, {
+				id: 1,
+				name: 'Client2',
+				surname: 'User2',
+				email: 'clientuser@offersApp.com',
+				imgSrc: 'https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAjhAAAAJDhlMGVhZjg5LTZmMjYtNDg1ZS05MDQxLWJiODEwY2E4NTgxYw.jpg'
+			}, {
+				id: 2,
+				name: 'Client3',
+				surname: 'User3',
+				email: 'clientuser@offersApp.com',
+				imgSrc: 'https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAjhAAAAJDhlMGVhZjg5LTZmMjYtNDg1ZS05MDQxLWJiODEwY2E4NTgxYw.jpg'
+			}];
+
+
+					$scope.messages = [{
+						to: 'Client1',
+						email: 'clientuser@offersApp.com',
+						image: 'https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAjhAAAAJDhlMGVhZjg5LTZmMjYtNDg1ZS05MDQxLWJiODEwY2E4NTgxYw.jpg',
+						message: 'This is a "Facebook" styled Card. The header is created from a Thumbnail List item, the content is from a card-body consisting of an image and paragraph text. The footer consists of tabs, icons aligned left, within the card-footer.'
+					}, {
+						to: 'Client2',
+						email: 'clientuser@offersApp.com',
+						image: 'https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAjhAAAAJDhlMGVhZjg5LTZmMjYtNDg1ZS05MDQxLWJiODEwY2E4NTgxYw.jpg',
+						message: 'This is a "Facebook" styled Card. The header is created from a Thumbnail List item, the content is from a card-body consisting of an image and paragraph text. The footer consists of tabs, icons aligned left, within the card-footer.'
+					}, {
+						to: 'Client3',
+						email: 'clientuser@offersApp.com',
+						image: 'https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAjhAAAAJDhlMGVhZjg5LTZmMjYtNDg1ZS05MDQxLWJiODEwY2E4NTgxYw.jpg',
+						message: 'This is a "Facebook" styled Card. The header is created from a Thumbnail List item, the content is from a card-body consisting of an image and paragraph text. The footer consists of tabs, icons aligned left, within the card-footer.'
+					}];
+
+					$scope.publications = [{
+							id: 1,
+							imgSrc:'',
+							title: 'Reggae',
+							description:'',
+							type: 'Normals'
+						},
+						{
+							imgSrc:'',
+							title: 'Chill',
+							id: 2,
+								description:'',
+							type: 'Normals'
+						},
+						{
+							imgSrc:'',
+							title: 'Dubstep',
+							id: 3,
+						description:'',
+							type: 'Normals'
+						},
+						{
+							imgSrc:'',
+							title: 'Indie',
+							id: 4,
+								description:'',
+							type: 'Normals'
+						},
+						{
+							imgSrc:'',
+							title: 'Rap',
+							id: 5,
+						description:'',
+							type: 'Specials'
+						},
+						{
+							imgSrc:'',
+							title: 'Cowbell',
+							id: 6,
+							description:'',
+							type: 'Specials'
+						}
+					];
+
+
+		}) //end controller
+
 
 
 	.controller('PublicationsCtrl', function($scope, $ionicModal, $ionicPlatform,  $cordovaCamera, $cordovaImagePicker, $cordovaToast) {
 		var state = false;
-    $scope.publication ={};
-		$scope.publications = [{
-				id: 1,
-				imgSrc:'',
-				title: 'Reggae',
-				description:'',
-				type: 'Normals'
-			},
-			{
-				imgSrc:'',
-				title: 'Chill',
-				id: 2,
-					description:'',
-				type: 'Normals'
-			},
-			{
-				imgSrc:'',
-				title: 'Dubstep',
-				id: 3,
-			description:'',
-				type: 'Normals'
-			},
-			{
-				imgSrc:'',
-				title: 'Indie',
-				id: 4,
-					description:'',
-				type: 'Normals'
-			},
-			{
-				imgSrc:'',
-				title: 'Rap',
-				id: 5,
-			description:'',
-				type: 'Specials'
-			},
-			{
-				imgSrc:'',
-				title: 'Cowbell',
-				id: 6,
-				description:'',
-				type: 'Specials'
-			}
-		];
+		$scope.newPublication={imgSrc:"",title: "",description:"",type: ""};
 
 		$ionicModal.fromTemplateUrl('templates/newPublications.html', {
 			scope: $scope
 		}).then(function(modal) {
-			$scope.modal = modal;
-
+			$scope.modalNewPublication = modal;
 		});
 
 
 		$scope.closeNewPublication = function() {
-			$scope.modal.hide();
+			$scope.modalNewPublication.hide();
 		};
 
 
 		$scope.openNewPublication = function() {
-			$scope.modal.show();
+			$scope.modalNewPublication.show();
+
 		};
 
 		$scope.changeState = function() {
 			state = !state;
-			$scope.publication.type ="Normals";
+			$scope.newPublication.type ="Normals";
 			if(state){
-						$scope.publication.type ="Specials";
+						$scope.newPublication.type ="Specials";
 		}else {
-						$scope.publication.type ="Normals";
+						$scope.newPublication.type ="Normals";
 			}
 
 			$cordovaToast
-									 .show('Type '+	$scope.publication.type+' selected!', 'short', 'bottom')
+									 .show('Type '+	$scope.newPublication.type+' selected!', 'short', 'bottom')
 									 .then(function (success) {
 										 // success
 									 }, function (error) {
@@ -253,14 +294,14 @@ angular.module('salseManApp.controllers', [])
 			var element = document.getElementById("descriptionArea");
 			element.style.height = element.scrollHeight + "px";
 
-			$scope.clearMessage = function() {
-				var element = document.getElementById("descriptionArea").value = "";
+			$scope.clearAll = function() {
+				var descriptionArea = document.getElementById("descriptionArea").value = "";
 			}
 		}
 
 
 		$scope.addNewPublication = function(){
-				$scope.publication.salseman = loginData.username;
+
 				//method to add the new publication in the list of publication
 
 				$cordovaToast
@@ -302,7 +343,7 @@ angular.module('salseManApp.controllers', [])
 											};
 											 $scope.takePicturePub = function() {
 													$cordovaCamera.getPicture(options).then(function(imageData) {
-																			$scope.publication.imgSrc = "data:image/jpeg;base64," + imageData;
+																			$scope.newPublication.imgSrc = "data:image/jpeg;base64," + imageData;
 													}, function(err) {
 															console.log(err);
 													});
@@ -318,7 +359,7 @@ angular.module('salseManApp.controllers', [])
 												$scope.picGalleryPub = function () {
 													$cordovaImagePicker.getPictures(galleryOpt)
 														.then(function (results) {
-																$scope.publication.imgSrc = results[0];
+																$scope.newPublication.imgSrc = results[0];
 																console.log('Image URI: ' + results[0]);
 														}, function (error) {
 															console.log(error);
@@ -327,30 +368,24 @@ angular.module('salseManApp.controllers', [])
 									});
 
 
+										$ionicModal.fromTemplateUrl('templates/publicationDetails.html', {
+											scope: $scope
+										}).then(function(modal) {
+											$scope.publicationDetails = modal;
+										});
 
 
-
-	}) //end controller
-
-	.controller('PublicationDetailsCtrl', function($scope, baseURL, $stateParams, publication, $ionicModal) {
-
-		$scope.publication = publication;
-
-		$ionicModal.fromTemplateUrl('templates/publicationDetails.html', {
-			scope: $scope
-		}).then(function(modal) {
-			$scope.modal = modal;
-		});
+										$scope.closePublicationDetails = function() {
+											$scope.publicationDetails.hide();
+										};
 
 
-		$scope.closePublicationDetails = function() {
-			$scope.modal.hide();
-		};
+										$scope.openPublicationDetails = function(index) {
+											$scope.publicationDetails.show();
+											$scope.publication = $scope.publications[index-1];
+										};
 
 
-		$scope.openPublicationDetails = function() {
-			$scope.modal.show();
-		};
 
 
 	}) //end controller
@@ -358,50 +393,48 @@ angular.module('salseManApp.controllers', [])
 
 
 
-	.controller('MessagesDetailsCtrl', function($scope, $stateParams) {}) //end controller
 
 
 
+	.controller('ClientsCtrl', function($scope, $ionicFilterBar, $ionicActionSheet, $ionicModal) {
 
-	.controller('ClientsCtrl', function($scope, $ionicFilterBar, $ionicActionSheet) {
-		$scope.clients = [{
-			id: 0,
-			name: 'Client1',
-			surname: 'User1',
-			email: 'clientuser@offersApp.com',
-			imgSrc: 'https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAjhAAAAJDhlMGVhZjg5LTZmMjYtNDg1ZS05MDQxLWJiODEwY2E4NTgxYw.jpg'
-		}, {
-			id: 1,
-			name: 'Client2',
-			surname: 'User2',
-			email: 'clientuser@offersApp.com',
-			imgSrc: 'https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAjhAAAAJDhlMGVhZjg5LTZmMjYtNDg1ZS05MDQxLWJiODEwY2E4NTgxYw.jpg'
-		}, {
-			id: 2,
-			name: 'Client3',
-			surname: 'User3',
-			email: 'clientuser@offersApp.com',
-			imgSrc: 'https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAjhAAAAJDhlMGVhZjg5LTZmMjYtNDg1ZS05MDQxLWJiODEwY2E4NTgxYw.jpg'
-		}];
+						$scope.showFilterBar = function() {
+							filterBarInstance = $ionicFilterBar.show({
+								items: $scope.clients,
+								update: function(filteredItems) {
+									$scope.clients = filteredItems;
+								},
+								filterProperties: 'name'
+							});
+						};
 
-		$scope.showFilterBar = function() {
-			filterBarInstance = $ionicFilterBar.show({
-				items: $scope.clients,
-				update: function(filteredItems) {
-					$scope.clients = filteredItems;
-				},
-				filterProperties: 'name'
-			});
-		};
+						//function to add a client
+						$scope.addClient = function() {
+							//put the function here
+						};
 
-		//function to add a client
-		$scope.addClient = function() {
-			//put the function here
-		}
+							$ionicModal.fromTemplateUrl('templates/clientDetails.html', {
+																scope: $scope
+																}).then(function(modal) {
+																	$scope.clientDetails = modal;
+																});
+
+
+							$scope.closeClientDetails = function() {
+																	$scope.clientDetails.hide();
+																};
+
+
+							$scope.openClientDetails = function(index) {
+																	$scope.clientDetails.show();
+																	$scope.client = $scope.clients[index];
+																};
+
+
 	})
 
 
-	.controller('ClientDetailsCtrl', function($scope, $stateParams) {})
+
 
 
 
@@ -427,26 +460,23 @@ angular.module('salseManApp.controllers', [])
 
 		$ionicPlatform.ready(function() {
 
-			var pickoptions = {
-				maximumImagesCount: 1,
-				width: 100,
-				height: 100,
-				quality: 50
-			};
+						var galleryOpt = {
+								maximumImagesCount: 1,
+								width: 100,
+								height: 100,
+								quality: 80
+							};
 
-			$scope.pickImage = function() {
-				$cordovaImagePicker.getGallery(pickoptions)
-					.then(function(results) {
-						for (var i = 0; i < results.length; i++) {
-							console.log('Image URI: ' + results[i]);
-							$scope.registration.imgSrc = results[0];
-						}
-					}, function(error) {
-						// error getting photos
-					});
-			};
-
-		});
+							$scope.changeImage = function () {
+								$cordovaImagePicker.getPictures(galleryOpt)
+									.then(function (results) {
+											$scope.loginData.imgSrc = results[0];
+											console.log('Image URI: ' + results[0]);
+									}, function (error) {
+										console.log(error);
+									});
+							};
+		    });
 
 
 		$scope.saveChanges = function() {
@@ -473,27 +503,11 @@ angular.module('salseManApp.controllers', [])
 
 	.controller('MessagesCtrl', function($scope, $stateParams, $ionicModal, $ionicFilterBar) {
 
-		$scope.messages = [{
-			to: 'Client1',
-			email: 'clientuser@offersApp.com',
-			image: 'https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAjhAAAAJDhlMGVhZjg5LTZmMjYtNDg1ZS05MDQxLWJiODEwY2E4NTgxYw.jpg',
-			message: 'This is a "Facebook" styled Card. The header is created from a Thumbnail List item, the content is from a card-body consisting of an image and paragraph text. The footer consists of tabs, icons aligned left, within the card-footer.'
-		}, {
-			to: 'Client2',
-			email: 'clientuser@offersApp.com',
-			image: 'https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAjhAAAAJDhlMGVhZjg5LTZmMjYtNDg1ZS05MDQxLWJiODEwY2E4NTgxYw.jpg',
-			message: 'This is a "Facebook" styled Card. The header is created from a Thumbnail List item, the content is from a card-body consisting of an image and paragraph text. The footer consists of tabs, icons aligned left, within the card-footer.'
-		}, {
-			to: 'Client3',
-			email: 'clientuser@offersApp.com',
-			image: 'https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAjhAAAAJDhlMGVhZjg5LTZmMjYtNDg1ZS05MDQxLWJiODEwY2E4NTgxYw.jpg',
-			message: 'This is a "Facebook" styled Card. The header is created from a Thumbnail List item, the content is from a card-body consisting of an image and paragraph text. The footer consists of tabs, icons aligned left, within the card-footer.'
-		}];
 
 		$ionicModal.fromTemplateUrl('templates/newMessages.html', {
 			scope: $scope
 		}).then(function(modal) {
-			$scope.modal = modal;
+			$scope.modalNewMessage = modal;
 		});
 
 		// Triggered in the login modal to close it
@@ -503,7 +517,7 @@ angular.module('salseManApp.controllers', [])
 
 		// Open the login modal
 		$scope.openNewMessage = function() {
-			$scope.modal.show();
+			$scope.modalNewMessage.show();
 		};
 
 		$scope.expandText = function() {
@@ -540,6 +554,7 @@ angular.module('salseManApp.controllers', [])
 
 		$scope.openMessagesDetails = function() {
 			$scope.messDetail.show();
+
 		};
 
 	});
