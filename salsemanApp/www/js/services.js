@@ -3,6 +3,42 @@
 angular.module('salseManApp.services', ['ngResource'])
 	.constant("baseURL", "http://localhost:3000")
 
+	.factory('clientsFactory', ['$resource', 'baseURL', function ($resource, baseURL) {
+
+								 return $resource(baseURL + "clients/:id", null, {
+										 'update': {
+												 method: 'PUT'
+										 }
+								 });
+
+		 }])
+
+
+
+.factory('publicationsFactory', ['$resource', 'baseURL', function ($resource, baseURL) {
+				 return $resource(baseURL + "publications/:id",null,{
+									 'update': {
+											 method: 'PUT'
+									 }
+				 });
+
+	}])
+
+
+.factory('messagesFactory', ['$resource', 'baseURL', function($resource,baseURL) {
+
+					 return $resource(baseURL + "messages/:id", null, {
+															 'update': {
+																	 method: 'PUT'
+															 }
+													 });
+
+		 }])
+
+
+
+
+
 	.factory('$localStorage', ['$window', function($window) {
       return {
         store: function(key, value) {

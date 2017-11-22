@@ -1,6 +1,6 @@
 angular.module('salseManApp.controllers', [])
 
-	.controller('AppCtrl', function($state, $scope, $ionicModal, $timeout, $ionicPlatform, $localStorage, $cordovaCamera, $cordovaImagePicker, $ionicPopup) {
+	.controller('AppCtrl',['$scope', function($state, $scope, $ionicModal, $timeout, $ionicPlatform, $localStorage, $cordovaCamera, $cordovaImagePicker, $ionicPopup) {
 
 		// With the new view caching in Ionic, Controllers are only called
 		// when they are recreated or on app start, instead of every page change.
@@ -9,6 +9,9 @@ angular.module('salseManApp.controllers', [])
 		//$scope.$on('$ionicView.enter', function(e) {
 		//});
 		// Form data for the login modal
+
+		$scope.loginData = $localStorage.getObject('userinfo', '{}');
+		$scope.registrationData = {};
 
 
 		var customTemplateLogin = '<div class="bar bar-header ">Login</div>' +
@@ -26,7 +29,7 @@ angular.module('salseManApp.controllers', [])
 			'<button class="button button-block button-small button-assertive" ng-click="closeLoginPopup()" >Cancel</button>' +
 			'</div>' +
 			'<div class="col">' +
-			'<button class="button button-block button-small button-positive " type="submit" >Log in</button>' +
+			'<button class="button button-block button-small button-positive " ng-click="doLogin()" >Log in</button>' +
 			'</div>	' +
 			'</div>' +
 			'	</div>' +
@@ -158,33 +161,15 @@ angular.module('salseManApp.controllers', [])
 									});
 							};
 		    });
-	}) //end Appcontroller
+	}]) //end Appcontroller
 
 
-		.controller('IndexCtrl', function($scope, $stateParams,$localStorage) {
-			$scope.loginData = $localStorage.getObject('userinfo', '{}');
-			$scope.registrationData = {};
-			$scope.clients = [{
-				id: 0,
-				name: 'Client1',
-				surname: 'User1',
-				email: 'clientuser@offersApp.com',
-				imgSrc: 'https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAjhAAAAJDhlMGVhZjg5LTZmMjYtNDg1ZS05MDQxLWJiODEwY2E4NTgxYw.jpg'
-			}, {
-				id: 1,
-				name: 'Client2',
-				surname: 'User2',
-				email: 'clientuser@offersApp.com',
-				imgSrc: 'https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAjhAAAAJDhlMGVhZjg5LTZmMjYtNDg1ZS05MDQxLWJiODEwY2E4NTgxYw.jpg'
-			}, {
-				id: 2,
-				name: 'Client3',
-				surname: 'User3',
-				email: 'clientuser@offersApp.com',
-				imgSrc: 'https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAjhAAAAJDhlMGVhZjg5LTZmMjYtNDg1ZS05MDQxLWJiODEwY2E4NTgxYw.jpg'
-			}];
+		.controller('IndexCtrl', ['$scope', 'client','publication','message','clientsFactory','publicationsFactory','messagesFactory',function($scope,client,publication,message,clientsFactory,publicationsFactory,messagesFactory $stateParams) {
 
-
+			$scope.clients = client;
+			$scope.messages =message;
+			$scope.publications = publication;
+/*
 					$scope.messages = [{
 						to: 'Client1',
 						email: 'clientuser@offersApp.com',
@@ -245,15 +230,15 @@ angular.module('salseManApp.controllers', [])
 							type: 'Specials'
 						}
 					];
+*/
+
+}]) //end controller
 
 
-		}) //end controller
 
-
-
-	.controller('PublicationsCtrl', function($scope, $ionicModal, $ionicPlatform,  $cordovaCamera, $cordovaImagePicker, $cordovaToast) {
+	.controller('PublicationsCtrl', ['$scope','publicationsFactory', function($scope, publicationsFactory, $ionicModal, $ionicPlatform,  $cordovaCamera, $cordovaImagePicker, $cordovaToast) {
 		var state = false;
-		$scope.newPublication={imgSrc:"",title: "",description:"",type: ""};
+		$scope.newPublication={title: "",description:"",type: "",imgSrc:""};
 
 		$ionicModal.fromTemplateUrl('templates/newPublications.html', {
 			scope: $scope
@@ -382,13 +367,13 @@ angular.module('salseManApp.controllers', [])
 
 										$scope.openPublicationDetails = function(index) {
 											$scope.publicationDetails.show();
-											$scope.publication = $scope.publications[index-1];
+											$scope.publication = publicationsFactory.geti(index);
 										};
 
 
 
 
-	}) //end controller
+	}]) //end controller
 
 
 
@@ -396,7 +381,7 @@ angular.module('salseManApp.controllers', [])
 
 
 
-	.controller('ClientsCtrl', function($scope, $ionicFilterBar, $ionicActionSheet, $ionicModal) {
+	.controller('ClientsCtrl', ['$scope','clientsFactory', function($scope, $ionicFilterBar, $ionicActionSheet, $ionicModal) {
 
 						$scope.showFilterBar = function() {
 							filterBarInstance = $ionicFilterBar.show({
@@ -431,14 +416,14 @@ angular.module('salseManApp.controllers', [])
 																};
 
 
-	})
+	}])
 
 
 
 
 
 
-	.controller('AccountCtrl', function($scope, $stateParams, $ionicPopup, $ionicPlatform, $cordovaImagePicker) {
+	.controller('AccountCtrl',['$scope', function($scope, $stateParams, $ionicPopup, $ionicPlatform, $cordovaImagePicker) {
 
 		$scope.modify = false;
 
@@ -499,9 +484,9 @@ angular.module('salseManApp.controllers', [])
 		}; //end function saveChanges
 
 
-	})
+	}])
 
-	.controller('MessagesCtrl', function($scope, $stateParams, $ionicModal, $ionicFilterBar) {
+	.controller('MessagesCtrl', ['$scope','messagesFactory',function($scope, messagesFactory, $stateParams, $ionicModal, $ionicFilterBar) {
 
 
 		$ionicModal.fromTemplateUrl('templates/newMessages.html', {
@@ -557,4 +542,4 @@ angular.module('salseManApp.controllers', [])
 
 		};
 
-	});
+	}]);

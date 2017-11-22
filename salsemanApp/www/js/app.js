@@ -24,6 +24,17 @@ angular.module('salseManApp', ['ionic', 'jett.ionic.filter.bar', 'ion-floating-m
 				abstract: true,
 				templateUrl: 'templates/sidemenu.html',
 				controller: 'IndexCtrl'
+				resolve: {
+						 client:      ['clientsFactory', function(clientsFactory)           {
+												return clientsFactory.get({id:0});
+						 }],
+						 publication: ['publicationsFactory', function(publicationsFactory) {
+												return publicationsFactory.get({id:0});
+						 }],
+						 message:    ['messagesFactory', function(messagesFactory){
+												return messagesFactory.get({id:0});
+						}]
+				 }
 			})
 
 			.state('app.start', {
@@ -54,18 +65,11 @@ angular.module('salseManApp', ['ionic', 'jett.ionic.filter.bar', 'ion-floating-m
 					'mainContent': {
 						templateUrl: 'templates/publications.html',
 						controller: 'PublicationsCtrl'
-					}
-				}
-			})
-
-
-
-			.state('app.publicationDetails', {
-				url: '/publicationDetails',
-				views: {
-					'mainContent': {
-						templateUrl: 'templates/publicationDetails.html',
-						controller: 'PublicationDetailsCtrl'
+						resolve:{
+							publications: ['publicationsFactory', function(publicationsFactory) {
+												 return publicationsFactory.query();
+							}]
+						}
 					}
 				}
 			})
@@ -76,6 +80,11 @@ angular.module('salseManApp', ['ionic', 'jett.ionic.filter.bar', 'ion-floating-m
 					'mainContent': {
 						templateUrl: 'templates/clients.html',
 						controller: 'ClientsCtrl'
+						resolve: {
+								 client:      ['clientsFactory', function(clientsFactory)           {
+														return clientsFactory.query();
+								 }]
+							 }
 					}
 				}
 			})
@@ -86,26 +95,57 @@ angular.module('salseManApp', ['ionic', 'jett.ionic.filter.bar', 'ion-floating-m
 					'mainContent': {
 						templateUrl: 'templates/messages.html',
 						controller: 'MessagesCtrl'
+						resolve:{
+						messages:    ['messagesFactory', function(messagesFactory){
+											 return messagesFactory.query();
+					 }]
+				 }
 					}
 				}
 			})
 
+			.state('app.publicationDetails', {
+				url: '/publications/:id',
+				views: {
+					'mainContent': {
+						templateUrl: 'templates/publicationDetails.html',
+						controller: 'PublicationDetailsCtrl',
+						resolve: {
+										 publication: ['$stateParams','publicationsFactory', function($stateParams, publicationsFactory){
+												 return publicationsFactory.get({id:parseInt($stateParams.id, 10)});
+										 }]
+			 			}
+					}
+				}
+			})
+
+
 			.state('app.messagesDetails', {
-				url: '/messagesDetails',
+				url: '/messages/:id',
 				views: {
 					'mainContent': {
 						templateUrl: 'templates/messagesDetails.html',
-						controller: 'MessagesDetailsCtrl'
+						controller: 'MessagesDetailsCtrl',
+						resolve: {
+										 message: ['$stateParams','messagesFactory', function($stateParams, messagesFactory){
+												 return messagesFactory.get({id:parseInt($stateParams.id, 10)});
+										 }]
+						}
 					}
 				}
 			})
 
 			.state('app.clientDetails', {
-				url: '/clientDetails',
+				url: '/clients/:id',
 				views: {
 					'mainContent': {
 						templateUrl: 'templates/clientDetails.html',
-						controller: 'ClientDetailsCtrl'
+						controller: 'ClientDetailsCtrl',
+						resolve: {
+										 message: ['$stateParams','messagesFactory', function($stateParams, clientsFactory){
+												 return clientsFactory.get({id:parseInt($stateParams.id, 10)});
+										 }]
+						}
 					}
 				}
 
