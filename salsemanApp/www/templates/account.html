@@ -4,14 +4,15 @@
     <button class="button button-clear" ng-click="toggleDitails()" ng-class="{active:!getState()}">
       <i class="icon ion-edit"></i>
     </button>
-  </ion-nav-buttons >
+  </ion-nav-buttons>
 
   <ion-content>
+      
     <form>
       <div class="list">
 
          <label class="item item-thumbnail">
-                <img ng-src="{{loginData.imgSrc}}">
+                <img ng-src="{{salseman.imgSrc}}">
           </label>
 
         <label class="item item-thumbnail" ng-If="getState()">
@@ -23,50 +24,51 @@
 
         <label class = "item item-input item-stacked-label">
           <span class = "input-label">Name</span>
-          <input type = "text" placeholder = "My name"  id="name" ng-model="loginData.Name" readonly=true/>
+          <input type = "text" placeholder = "My name"  id="name" ng-model="salseman.name" value="{{salseman.name}}" readonly=true/>
         </label>
 
         <label class = "item item-input item-stacked-label">
           <span class = "input-label">Surname</span>
-          <input type = "text" placeholder = "My Surname"  id="surname" ng-model="loginData.surname" readonly=true/>
+          <input type = "text" placeholder = "My Surname"  id="surname" ng-model="salseman.surname" value="{{salseman.surname}}" readonly=true/>
         </label>
 
         <label class = "item item-input item-stacked-label">
           <span class = "input-label">Username</span>
-          <input type = "text" placeholder = "My Username"  id="username" ng-model="loginData.username" readonly=true/>
+          <input type = "text" placeholder = "My username"  id="username" ng-model="salseman.username" value="{{salseman.username}}" readonly=true/>
         </label>
 
       <label class = "item item-input item-stacked-label">
           <span class = "input-label">Company</span>
-          <input type = "text" placeholder = "My company"  id="company" ng-model="loginData.company" readonly=true/>
+          <input type = "text" placeholder = "My company"  id="company" ng-model="salseman.company" value="{{salseman.company}}" readonly=true/>
       </label>
 
         <label class = "item item-input item-stacked-label">
           <span class = "input-label">Phone Numb.</span>
-          <input type = "text" placeholder = ""  id="phoneNumber" ng-model="loginData.phoneNumber" readonly=true/>
+          <input type = "text" placeholder = ""  id="phoneNumber" ng-model="salseman.phoneNumber" value="{{salseman.phoneNumber}}" readonly=true/>
         </label>
 
 
         <label class = "item item-input item-stacked-label">
           <span class = "input-label">Email</span>
-          <input type = "email" placeholder = "-@-."  id="email" ng-model="loginData.email" readonly=true/>
+          <input type = "email" placeholder = "-@-."  id="email" ng-model="salseman.email" value="{{salseman.email}}" readonly=true/>
         </label>
 
 
         <label class = "item item-input item-stacked-label">
           <span class = "input-label">Password</span>
-          <input type = "password" placeholder = ""  id="password" ng-model="loginData.passwod" readonly=true/>
+          <input type = "password" placeholder = ""  id="password" ng-model="salseman.password" value="{{salseman.password}}" readonly=true/>
         </label>
-
+          
+      
+        
+        <button ng-If="getState()" class="button button-block button-full button-balanced icon icon-right ion-checkmark-round " end 
+                ng-click="saveChanges()">
+            Save Changes
+        </button>
 
       </div>
-
-      <div class="buttons" ng-If="!getState()">
-        <button class="button button-block button-full button-assertive" ng-click="logout()" end>Log out</button>
-      </div>
-      <div class="buttons" ng-If="getState()">
-        <button class="button button-block button-full button-balanced icon icon-right ion-checkmark-round " end ng-If="getState()" ng-click="saveChanges()">Save Changes</button>
-      </div>
+      </form>
+        
     </ion-content>
 
   </ion-view>

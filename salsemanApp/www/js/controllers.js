@@ -1,57 +1,49 @@
 angular.module('salseManApp.controllers', [])
 
-	.controller('AppCtrl', function($state, $scope, $ionicModal, $timeout, $ionicPlatform, $localStorage, $cordovaCamera, $cordovaImagePicker, $ionicPopup) {
+.controller('AppCtrl', function ($scope,$state, $rootScope, $ionicModal, $timeout, $localStorage, $ionicPlatform, $cordovaCamera, $cordovaImagePicker, AuthFactory) {
 
-		// With the new view caching in Ionic, Controllers are only called
-		// when they are recreated or on app start, instead of every page change.
-		// To listen for when this page is active (for example, to refresh data),
-		// listen for the $ionicView.enter event:
-		//$scope.$on('$ionicView.enter', function(e) {
-		//});
-		// Form data for the login modal
+    // With the new view caching in Ionic, Controllers are only called
+    // when they are recreated or on app start, instead of every page change.
+    // To listen for when this page is active (for example, to refresh data),
+    // listen for the $ionicView.enter event:
+    //$scope.$on('$ionicView.enter', function(e) {
+    //});
 
-
-		var customTemplateLogin = '<div class="bar bar-header ">Login</div>' +
-			'<div class="list">' +
-			'<form>' +
-			'<label class="item item-input">' +
-			'<input type="text" placeholder="username" id="username" ng-model="loginData.username">' +
-			'</label>' +
-			'<label class="item item-input">' +
-			'<input type="password" placeholder="password"   id="password" ng-model="loginData.password">' +
-			'</label>' +
-			'<div class="grid">' +
-			'<div class="row">' +
-			'<div class="col">' +
-			'<button class="button button-block button-small button-assertive" ng-click="closeLoginPopup()" >Cancel</button>' +
-			'</div>' +
-			'<div class="col">' +
-			'<button class="button button-block button-small button-positive " ng-click="doLogin()" >Log in</button>' +
-			'</div>	' +
-			'</div>' +
-			'	</div>' +
-			'</form>' +
-			'</div>';
+    // Form data for the login modal
+    $scope.loginData = $localStorage.getObject('userinfo','{}');
+    $scope.reservation = {};
+    $scope.salseman={};
+    $scope.registrationData = {};
+    $scope.loggedIn = false;
+    
+    if(AuthFactory.isAuthenticated()) {
+        $scope.loggedIn = true;
+        $scope.salseman = AuthFactory.getUser();
+        $state.go("app.clients");
+    }
 
 
-		$scope.showLoginPopup = function() {
-			var myPopUp = $ionicPopup.show({
-				template: customTemplateLogin,
-				scope: $scope,
-			});
+    $scope.doLogin = function () {
+        console.log('Doing login', $scope.loginData);
+        $localStorage.storeObject('userinfo',$scope.loginData);
 
-			$scope.closeLoginPopup = function() {
-				myPopUp.close();
-			}
+        AuthFactory.login($scope.loginData);
+        
+    };
+    
+    $scope.doLogout = function() {
+       AuthFactory.logout();
+        $scope.loggedIn = false;
+        $scope.salseman = {};
+         $state.go("app.login");
+    };
+            
 
-			$scope.doLogin = function() {
-
-				$state.go('app.clients');
-				myPopUp.close();
-				console.log('Doing login', $scope.loginData);
-			}
-
-		};
+       $rootScope.$on('login:Successful', function () {
+        $scope.loggedIn = AuthFactory.isAuthenticated();
+        $scope.salseman = AuthFactory.getUser();
+       });
+    
 
 		// image picker for logged user
 				$ionicPlatform.ready(function() {
@@ -68,7 +60,7 @@ angular.module('salseManApp.controllers', [])
 				        };
 				         $scope.takePicture = function() {
 				            $cordovaCamera.getPicture(options).then(function(imageData) {
-												        $scope.loginData.imgSrc = "data:image/jpeg;base64," + imageData;
+								$scope.salseman.imgSrc = "data:image/jpeg;base64," + imageData;
 				            }, function(err) {
 				                console.log(err);
 				            });
@@ -84,7 +76,7 @@ angular.module('salseManApp.controllers', [])
 									$scope.picGallery = function () {
 										$cordovaImagePicker.getPictures(galleryOpt)
 											.then(function (results) {
-													$scope.loginData.imgSrc = results[0];
+													$scope.salseman.imgSrc = results[0];
 													console.log('Image URI: ' + results[0]);
 											}, function (error) {
 												console.log(error);
@@ -101,24 +93,36 @@ angular.module('salseManApp.controllers', [])
 		});
 
 		// Triggered in the registration modal to close it
-		$scope.closeRegister = function() {
+		$scope.closeRegistration = function() {
 			$scope.registerform.hide();
 		};
 
 		// Open the registration modal
-		$scope.register = function() {
+		$scope.openRegistration = function() {
 			$scope.registerform.show();
 		};
 
 		// Perform the registration action when the user submits the registration form
 		$scope.doRegistration = function() {
+            
+              $scope.loginData.username = $scope.registrationData.username;
+              $scope.loginData.password = $scope.registrationData.password;
+            
+            AuthFactory.register($scope.registrationData);
 
-			$state.go('app.clients');
 
 			$timeout(function() {
-				$scope.closeRegister();
+				$scope.closeRegistration();
+                $state.go("app.clients");
 			}, 1000);
 		};
+    
+        $rootScope.$on('registration:Successful', function () {
+        $scope.loggedIn = AuthFactory.isAuthenticated();
+        $scope.salseman = AuthFactory.getUser();
+        $localStorage.storeObject('userinfo',$scope.loginData);
+    });
+    
 
 //image picker for registration user
 		$ionicPlatform.ready(function() {
@@ -135,7 +139,7 @@ angular.module('salseManApp.controllers', [])
 		        };
 		         $scope.takePictureReg = function() {
 		            $cordovaCamera.getPicture(options).then(function(imageData) {
-										        $scope.registrationData.imgSrc = "data:image/jpeg;base64," + imageData;
+                        $scope.registrationData.imgSrc = "data:image/jpeg;base64," + imageData;
 		            }, function(err) {
 		                console.log(err);
 		            });
@@ -158,12 +162,13 @@ angular.module('salseManApp.controllers', [])
 									});
 							};
 		    });
+    
+    
 	}) //end Appcontroller
 
 
 		.controller('IndexCtrl', function($scope, $stateParams,$localStorage) {
-			$scope.loginData = $localStorage.getObject('userinfo', '{}');
-			$scope.registrationData = {};
+		
 			$scope.clients = [{
 				id: 0,
 				name: 'Client1',

@@ -19,7 +19,7 @@
     <ion-content>
       <ion-list>
         <ion-item class="item-divider" ng-if="loggedIn">
-          {{username}}
+          {{saleman.username}}
         </ion-item>
         <ion-item menu-close href="#/app/account" class="item item-icon-left">
           <i class="icon ion-ios-person"></i>
@@ -36,6 +36,10 @@
         <ion-item menu-close href="#/app/messages" class="item item-icon-left">
           <i class="icon ion-chatbubbles"></i>
           Messages
+        </ion-item>
+        <ion-item menu-close ng-click="doLogout()" class="item item-icon-left">
+          <i class="icon ion-log-out"></i>
+            Logout
         </ion-item>
 
       </ion-list>

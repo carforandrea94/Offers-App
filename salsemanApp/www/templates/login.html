@@ -1,0 +1,26 @@
+<ion-view  hide-nav-bar="true">
+    <ion-content padding="true" scroll="false">
+        <form ng-submit="doLogin()">
+           <div class="spacer" style="height:100px;" id="home-spacer1"></div>
+           <div class = "list">
+               <label class = "item item-input item-stacked-label">
+                  <span class = "input-label"t>Username</span>
+                  <input type = "text" placeholder = "Username" />
+               </label>
+
+               <label class = "item item-input item-stacked-label">
+                  <span class = "input-label">Password</span>
+                  <input type = "password" placeholder = "Password" />
+               </label>
+               
+               <button type ="submit" class = "button button-block button-positive">
+                    Log in
+                </button>
+               
+               <button class = "button button-block button-balanced" ng-click="openRegistration()">
+                    Sig in
+               </button>
+            </div>
+        </form>
+    </ion-content>
+</ion-view>

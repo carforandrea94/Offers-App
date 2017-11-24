@@ -3,56 +3,54 @@
 
 		<h1 class="title">Registration User</h1>
 		<div class="buttons">
-			<button class="button button-clear button-dark" ng-click="closeRegister()">Close</button>
+			<button class="button button-clear button-dark" ng-click="closeRegistration()">Close</button>
 		</div>
 	</ion-header-bar>
 		<ion-content>
 	<form ng-submit="doRegister()">
 
 			<div class="list">
-        <label class = "item item-input item-stacked-label">
-          <span class = "input-label">Name</span>
-          <input type = "text" placeholder = "My name"  id="name" ng-model="registrationData.Name" readonly=true/>
-        </label>
+                <label class = "item item-input item-stacked-label">
+                  <span class = "input-label">Name</span>
+                  <input type = "text" placeholder = "My name"  id="name" ng-model="registrationData.name" />
+                </label>
 
-        <label class = "item item-input item-stacked-label">
-          <span class = "input-label">Surname</span>
-          <input type = "text" placeholder = "My Surname"  id="surname" ng-model="registrationData.Surname" readonly=true/>
-        </label>
+                <label class = "item item-input item-stacked-label">
+                  <span class = "input-label">Surname</span>
+                  <input type = "text" placeholder = "My Surname"  id="surname" ng-model="registrationData.surname" />
+                </label>
 
-        <label class = "item item-input item-stacked-label">
-          <span class = "input-label">Username</span>
-          <input type = "text" placeholder = "My Username"  id="username" ng-model="registrationData.Username" readonly=true/>
-        </label>
+                <label class = "item item-input item-stacked-label">
+                  <span class = "input-label">Username</span>
+                  <input type = "text" placeholder = "My Username"  id="username" ng-model="registrationData.username" />
+                </label>
 
-      <label class = "item item-input item-stacked-label">
-          <span class = "input-label">Company</span>
-          <input type = "text" placeholder = "My company"  id="company" ng-model="registrationData.company" readonly=true/>
-      </label>
+              <label class = "item item-input item-stacked-label">
+                  <span class = "input-label">Company</span>
+                  <input type = "text" placeholder = "My company"  id="company" ng-model="registrationData.company" />
+              </label>
 
-
-
-        <label class = "item item-input item-stacked-label">
-          <span class = "input-label">Phone Numb.</span>
-          <input type = "text" placeholder = ""  id="phoneNumber" ng-model="registrationData.phoneNumber" readonly=true/>
-        </label>
+            <label class = "item item-input item-stacked-label">
+              <span class = "input-label">Phone Numb.</span>
+              <input type = "number" placeholder = ""  id="phoneNumber" ng-model="registrationData.phoneNumber" />
+            </label>
 
 
-        <label class = "item item-input item-stacked-label">
-          <span class = "input-label">Email</span>
-          <input type = "email" placeholder = "-@-."  id="email" ng-model="registrationData.email" readonly=true/>
-        </label>
+            <label class = "item item-input item-stacked-label">
+              <span class = "input-label">Email</span>
+              <input type = "email" placeholder = "-@-."  id="email" ng-model="registrationData.email"/>
+            </label>
 
 
-        <label class = "item item-input item-stacked-label">
-          <span class = "input-label">Password</span>
-          <input type = "password" placeholder = ""  id="password" ng-model="registrationData.passwod" readonly=true/>
-        </label>
+            <label class = "item item-input item-stacked-label">
+              <span class = "input-label">Password</span>
+              <input type = "password" placeholder = ""  id="password" ng-model="registrationData.password"/>
+            </label>
 
-			 <label class = "item item-input item-stacked-label">
-					<span class="input-label">Your Picture</span>
-					<img class="padding" ng-src="{{registrationData.imgSrc}}">
-				</label>
+              <label class = "item item-input item-stacked-label">
+                  <span class="input-label">Your Picture</span>
+                  <img class="padding" ng-src="{{registrationData.imgSrc}}">
+              </label>
 
 				<label class="item item-thumbnail">
 						<button class="button  button-block button-dark button-outline icon icon-left ion-camera" ng-click="takePictureReg()">Take Picture</button>
@@ -67,7 +65,7 @@
 
 
 		<ion-footer-bar class="bar-positive">
-			<button class="button button-clear icon icon-right ion-forward pull-right" type="submit" end>
+			<button class="button button-clear icon icon-right ion-forward pull-right" ng-click="doRegistration()" end>
 				<strong>Register</strong>
 			</button>
 		</ion-footer-bar>
