@@ -1,6 +1,6 @@
 angular.module('salseManApp.controllers', [])
 
-.controller('AppCtrl', function ($scope,$state, $rootScope, $ionicModal, $timeout, $localStorage, $ionicPlatform, $cordovaCamera, $cordovaImagePicker, AuthFactory) {
+.controller('AppCtrl', function ($scope,$state, $rootScope, $ionicModal, $timeout, $localStorage, $ionicPlatform, $cordovaCamera, $cordovaImagePicker,$cordovaToast, AuthFactory) {
 
     // With the new view caching in Ionic, Controllers are only called
     // when they are recreated or on app start, instead of every page change.
@@ -11,14 +11,13 @@ angular.module('salseManApp.controllers', [])
 
     // Form data for the login modal
     $scope.loginData = $localStorage.getObject('userinfo','{}');
-    $scope.reservation = {};
-    $scope.salseman={};
+    $scope.username='';
     $scope.registrationData = {};
     $scope.loggedIn = false;
     
     if(AuthFactory.isAuthenticated()) {
         $scope.loggedIn = true;
-        $scope.salseman = AuthFactory.getUser();
+        $scope.username = AuthFactory.getUsername();
         $state.go("app.clients");
     }
 
@@ -26,65 +25,32 @@ angular.module('salseManApp.controllers', [])
     $scope.doLogin = function () {
         console.log('Doing login', $scope.loginData);
         $localStorage.storeObject('userinfo',$scope.loginData);
-
         AuthFactory.login($scope.loginData);
-        
+        $state.go("app.clients");
+        	$cordovaToast
+                .show('Welcome '+AuthFactory.getUsername(), 'short', 'bottom')
+                .then(function (success) {
+										 // success
+									 }, function (error) {
+										 // error
+									 });
     };
     
     $scope.doLogout = function() {
        AuthFactory.logout();
         $scope.loggedIn = false;
-        $scope.salseman = {};
+        $scope.username = "";
          $state.go("app.login");
     };
             
 
        $rootScope.$on('login:Successful', function () {
         $scope.loggedIn = AuthFactory.isAuthenticated();
-        $scope.salseman = AuthFactory.getUser();
+        $scope.username = AuthFactory.getUsername();
        });
     
 
-		// image picker for logged user
-				$ionicPlatform.ready(function() {
-				        var options = {
-				            quality: 50,
-				            destinationType: Camera.DestinationType.DATA_URL,
-				            sourceType: Camera.PictureSourceType.CAMERA,
-				            allowEdit: true,
-				            encodingType: Camera.EncodingType.JPEG,
-				            targetWidth: 100,
-				            targetHeight: 100,
-				            popoverOptions: CameraPopoverOptions,
-				            saveToPhotoAlbum: false
-				        };
-				         $scope.takePicture = function() {
-				            $cordovaCamera.getPicture(options).then(function(imageData) {
-								$scope.salseman.imgSrc = "data:image/jpeg;base64," + imageData;
-				            }, function(err) {
-				                console.log(err);
-				            });
-				        };
-
-								var galleryOpt = {
-										maximumImagesCount: 1,
-										width: 100,
-										height: 100,
-										quality: 80
-									};
-
-									$scope.picGallery = function () {
-										$cordovaImagePicker.getPictures(galleryOpt)
-											.then(function (results) {
-													$scope.salseman.imgSrc = results[0];
-													console.log('Image URI: ' + results[0]);
-											}, function (error) {
-												console.log(error);
-											});
-									};
-				    });
-
-
+	
 
 		$ionicModal.fromTemplateUrl('templates/registration.html', {
 			scope: $scope
@@ -119,7 +85,7 @@ angular.module('salseManApp.controllers', [])
     
         $rootScope.$on('registration:Successful', function () {
         $scope.loggedIn = AuthFactory.isAuthenticated();
-        $scope.salseman = AuthFactory.getUser();
+        $scope.username = AuthFactory.getUsername();
         $localStorage.storeObject('userinfo',$scope.loginData);
     });
     
@@ -446,6 +412,7 @@ angular.module('salseManApp.controllers', [])
 	.controller('AccountCtrl', function($scope, $stateParams, $ionicPopup, $ionicPlatform, $cordovaImagePicker) {
 
 		$scope.modify = false;
+        $scope.salseman={};
 
 		$scope.toggleDitails = function() {
 			$scope.modify = !$scope.modify;
@@ -475,7 +442,7 @@ angular.module('salseManApp.controllers', [])
 							$scope.changeImage = function () {
 								$cordovaImagePicker.getPictures(galleryOpt)
 									.then(function (results) {
-											$scope.loginData.imgSrc = results[0];
+											$scope.salseman.imgSrc = results[0];
 											console.log('Image URI: ' + results[0]);
 									}, function (error) {
 										console.log(error);

@@ -2,9 +2,8 @@
 
 angular.module('salseManApp.services', ['ngResource'])
  .constant("baseURL", "http://192.168.1.16:3000")
- 
 
-.factory('$localStorage', ['$window', function($window) {
+ .factory('$localStorage', ['$window', function($window) {
   return {
     store: function(key, value) {
       $window.localStorage[key] = value;
